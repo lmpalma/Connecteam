@@ -44,7 +44,7 @@
             <header class="header">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg align-content-center px-0">
-                        <a class="navbar-brand logo" href="#">Connecteam</a>
+                        <a class="navbar-brand logo" href="{{ route('frontend.home') }}">Connecteam</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-bars"></i>
                         </button>
@@ -52,7 +52,7 @@
                         <div class="collapse navbar-collapse" id="menu">
                             <ul class="navbar-nav ml-lg-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                                    <a class="nav-link active" href="{{ route('frontend.home') }}">Home <span class="sr-only">(current)</span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link ips" href="#features">Features</a>
