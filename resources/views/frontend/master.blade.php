@@ -58,7 +58,7 @@
                                     <a class="nav-link ips" href="#features">Features</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-primary" href="#">Login</a>
+                                    <a class="nav-link text-primary" href="{{ route('frontend.login') }}">Login</a>
                                 </li>
                             </ul>
                         </div>
@@ -80,7 +80,7 @@
                                 <!-- Empty Space -->
                                 <div class="space-lg"></div>
                                 <!--/ End Empty Space -->
-                                <a href="#" class="btn btn-lg btn-primary btn-outline-primary">LOG IN</a>
+                                <a href="{{ route('frontend.login') }}" class="btn btn-lg btn-primary btn-outline-primary">LOG IN</a>
                             </div>
                         </div>
                     </div>
