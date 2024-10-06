@@ -12,6 +12,11 @@ use Hash;
 
 class EmployeeController extends Controller
 {
+
+    public function dashboard()
+    {
+        return view('employee.dashboard');
+    }
 //REGISTRATION FUNCTION
 public function register(Request $request){
     $validator = Validator::make($request->all(), [

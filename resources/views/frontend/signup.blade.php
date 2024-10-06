@@ -117,6 +117,7 @@
             font-size: 12px;
             padding: 20px;
             color: white;
+            font-family: Georgia;
         }
         .welcome {
             font-size: 35px;
@@ -124,6 +125,20 @@
             text-align: center;
             margin: 0;
             margin-bottom: 20px;
+        }
+
+        .alert-error {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            font-family: Tahoma;
+            font-size: 16px;
         }
 
         @media (max-width: 768px) {
@@ -144,16 +159,35 @@
     </div>
     <div class="page-area">
         <h1 class="welcome">CREATE AN ACCOUNT</h1>
+
+        @if($errors->any())
+            <div class="alert alert-error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="container">
-            <label for="fullName">Full Name:</label>
-            <input type="text" id="fullName" class="input-box" placeholder="Enter your full name" required>
-            <label for="email">Email:</label>
-            <input type="text" id="email" class="input-box" placeholder="Enter your email" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" class="input-box" placeholder="Enter your password" required>
-            <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" class="input-box" placeholder="Confirm your password" required>
-            <button type="button" class="login-btn">SIGN UP</button>
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" class="input-box" placeholder="Enter your full name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="input-box" placeholder="Enter your email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
+                
+                <label for="password_confirmation">Confirm Password:</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="input-box" placeholder="Confirm your password" required>
+                
+                <button type="submit" class="signup-btn">SIGN UP</button>
+            </form>
             <p>Already have an account? <a href="{{ route('frontend.login') }}">Log In</a></p>
         </div>
     </div>

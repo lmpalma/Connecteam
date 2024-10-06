@@ -127,6 +127,34 @@
             margin-bottom: 30px; 
         }
 
+        .alert-success {
+            padding: 10px;
+            margin: 10px 0; 
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            font-family: Tahoma;
+            font-size: 16px;
+        }
+
+        .alert-error {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            font-family: Tahoma;
+            font-size: 16px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 width: 90%;
@@ -149,14 +177,38 @@
     <div class="page-area">
         <h1 class="welcome">WELCOME BACK!</h1>
         <p class="intro">We are glad to see you again.</p>
+
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if($errors->any())
+            <div class="alert alert-error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        
         <div class="container">
-            <label for="email">Email:</label>
-            <input type="text" id="email" class="input-box" placeholder="Enter your email" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" class="input-box" placeholder="Enter your password" required>
-            <p>Forgot password? <a href="signup.html">Click Here</a></p>
-            <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
-            <button type="button" class="login-btn">LOGIN</button>
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
+                
+                <p>Forgot password? <a href="#">Click Here</a></p>
+                <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
+                
+                <button type="submit" class="login-btn">LOGIN</button>
+            </form>
         </div>
     </div>
     <footer>

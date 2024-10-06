@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Connecteam - An Employee Task Management Platform</title>
-    <meta name="description" content="Ankon is a free bootstrap theme by themes for app. We have made it for the productized services startup and enntrepreneurs. It includes all essential sections that a startup might need.">
-    <meta name="keywords" content="html template, free bootstrap theme, themes for app, themesforapp, productized service, productised service">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Standard favicon -->
@@ -282,13 +280,6 @@
                         &copy; 2024, Connecteam. All rights reserved.
                     </div>
                 </div>
-                    <!-- <div class="col-12 col-lg-6">
-                        <ul class="nav justify-content-center justify-content-lg-end">
-                            <li class="nav-item"><a href="#" class="nav-link"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link"><i class="fab fa-twitter"></i></a></li>
-                            <li class="nav-item"><a href="#" class="nav-link"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                    </div> -->
                 </div>
             </div>
         </footer>

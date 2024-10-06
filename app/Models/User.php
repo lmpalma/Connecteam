@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -31,6 +32,10 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function employees() {
+        return $this->hasMany(User::class, 'manager_id'); 
+    }
 
     /**
      * Get the attributes that should be cast.
