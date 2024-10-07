@@ -6,11 +6,12 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <title>Connecteam - Dashboard</title>
+
+        <title>Connecteam - Create Task</title>
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg2.png') }}');
+                background-image: url('{{ asset('assets/images/bg1.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
@@ -93,6 +94,21 @@
                 color: black;
                 text-align: center;
             }
+
+            section {
+                width: 40vw;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
+                padding: 30px;
+                background-color: white;
+                border-radius: 20px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                
+            }
+
             .menu-list{
                 width: 15vw;
                 text-decoration: none;
@@ -105,42 +121,6 @@
                 text-align: center;
                 display: inline-block;
             }
-
-            .dashboard {
-                flex: 1;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 20px;
-            }
-
-            .box {
-                width: 20%;
-                height: 20vh;
-                margin: 10px 10px;
-                border-radius: 15px;
-                background-color: #e3e8e8;
-                border: solid #5b3a9b 2px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            .box i {
-                font-size: 26px;
-                color: #5b3a9b;
-                margin-bottom: 15px;
-            }
-
-            .box p {
-                margin: 0;
-                font-size: 18px;
-                color: #5b3a9b;
-            }
-
             .container{
                 width: 25vw;
                 height: 50vh;
@@ -157,7 +137,80 @@
                 font-family: Verdana;
                 text-align: center;
             }
-            
+            label {
+                font-size: 14px;
+                font-family: Verdana;
+                color: rgb(50, 50, 50);
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input[type="text"], textarea, input[type="date"], select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border: solid 1px #cccccc;
+                background: rgba(252, 252, 252, 0.9);
+                font-family: Verdana;
+                font-size: 14px;
+                transition: border-color 0.3s ease;
+            }
+
+            input[type="text"]:focus, textarea:focus, input[type="date"]:focus, select:focus {
+                border-color: #5b3a9b;
+                outline: none;
+            }
+
+            /* .input-box{
+                min-width: 38vw;
+                max-width: 38vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            }
+            .input-box2{
+                min-width: 38vw;
+                max-width: 38vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 10vh;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            }
+            .input-box3{
+                width: 15vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            } */
+            .create-button {
+                width: 50%;
+                padding: 10px;
+                font-size: 16px;
+                background-color: #5b3a9b;
+                border-radius: 10px;
+                color: white;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .create-button:hover {
+                background-color: #4a318a;
+            }
             p{
                 font-size: 12px;
                 font-family: Verdana;
@@ -168,23 +221,30 @@
                 color: black;
             }
             
-            .footer-bar {
-                height: 10vh;
-                background-color: #5b3a9b;
-                color: #fff;
-                text-align: center;
-                padding: 30px;
-                margin-top: auto;
+            .dashboard{
+                width:100%;
                 display: flex;
-                justify-content: center;
-                align-items: center;
+                margin-left: 50px;
             }
-            h4 {
-                font-size: 12px;
-                margin: 0;
+            .box{
+                width: 20vw;
+                height: 25vh;
+                border-radius: 10px;
+                margin: 40px;
+                background-color: darkseagreen;
+                opacity: 70%;
+                display: inline-block;
+                border: solid black 2px;
+            }
+            h2{
+                font-size: 25px;
+                font-family: Verdana;
+                text-align: center;
+                margin-left: 20px;
+                color: #5b3a9b;
             }
             
-            .footer-bar {
+            .footer-bar{
                 height: 10vh;
                 background-color: #5b3a9b;
                 color: white;
@@ -195,11 +255,11 @@
                 justify-content: center;
                 align-items: center;
             }
-            h4 {
+            h4{
                 font-size: 12px;
-                margin: 0;
+                text-align: center;
+                padding: 30px;
             }
-            
             a{
                 text-decoration: none;
             }
@@ -231,6 +291,7 @@
                     width: 80vw;
                 }
             }
+
         </style>
     </head>
     <body>
@@ -241,9 +302,9 @@
                     <div class = "img"></div>
                     <h3 class = "admin-name">{{ $user->name }}</h3>
                     <br><br>
-                    <a class = "current-page" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
+                    <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
+                    <a class = "current-page" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
@@ -255,46 +316,32 @@
                     <a class="menu-list" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-arrow-right-to-bracket"></i>
                         <span style="margin-left: 10px; font-style: italic;">Log Out</span>
-                    </a>            
+                    </a>              
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <section class="dashboard">
-                <div class="box">
-                    <i class="fa fa-users"></i>
-                    <p>{{ $employeeCount }} Employees</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-tasks"></i>
-                    <p># All Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-check"></i>
-                    <p># Completed Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-clock"></i>
-                    <p># Pending Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-spinner"></i>
-                    <p># Tasks In Progress</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-triangle-exclamation"></i>
-                    <p># Overdue Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-business-time"></i>
-                    <p># Tasks with No Deadline</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-calendar-day"></i>
-                    <p># Tasks Due Today</p>
-                </div>
+            <section>
+                <h2>CREATE TASK</h2>
+                    <label>Title</label><br>
+                    <input type = "text">
+                    <br><br>
+                    <label>Description</label><br>
+                    <textarea></textarea>
+                    <br><br>
+                    <label>Due Date</label><br>
+                    <input type = "date">
+                    <br><br>
+                    <label>Assigned To:</label><br>
+                    <select>
+                        <option>role1</option>
+                        <option>role2</option>
+                    </select>
+                    <br>
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type ="button" class = "create-button">CREATE</button>
             </section>
         </div>
     </body>

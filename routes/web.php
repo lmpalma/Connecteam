@@ -21,6 +21,17 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    // task routes
+    Route::get('/admin/task/create',[AdminController::class,'create'])->name('admin.task.create');
+    Route::get('/admin/task/index',[AdminController::class,'viewTasks'])->name('admin.task.index');
+
+    // user crud routes
+    Route::get('/admin/user/index',[AdminController::class,'viewUsers'])->name('admin.user.index');
+    Route::get('/admin/user/create',[AdminController::class,'createUser'])->name('admin.user.create');
+    Route::post('/admin/user/store',[AdminController::class,'storeUser'])->name('admin.user.store');
+
+
 });
 
 Route::middleware(['isEmployee'])->group(function () {
