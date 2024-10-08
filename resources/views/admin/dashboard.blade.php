@@ -270,7 +270,7 @@
             </div>
             <div class="box">
                 <i class="fa fa-tasks"></i>
-                <p>{{ $taskCount }} All Tasks</p>
+                <p>{{ $taskCount }} Overall Tasks</p>
             </div>
             <div class="box">
                 <i class="fa fa-check"></i>

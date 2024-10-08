@@ -348,6 +348,34 @@
                 color: rgb(0, 0, 0);
             }
 
+            .alert-success {
+                padding: 10px;
+                margin: 10px 0; 
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .alert-error {
+                padding: 10px;
+                margin: 10px 0;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+            
             @media (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
@@ -388,28 +416,36 @@
         <div class = "page">
             <!-- <section> -->
                 <h2>MY TASKS</h2>
+
+                @if (session('success'))
+                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 
                 <table class="main-table">
                     <tr>
                         <th>#</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Status</th>
                         <th>Due Date</th>
+                        <th>Status</th>
                         <th>Action</th>
 
                     </tr>
                     
-                    <tr>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>
-                            <a href="#" class="edit-btn">Edit</a>
-                        </td>
-                    </tr>
+                    @foreach($tasks as $index => $task)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $task->title }}</td>
+                            <td>{{ $task->description }}</td>
+                            <td>{{ $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : 'N/A' }}</td>
+                            <td>{{ $task->status }}</td>
+                            <td>
+                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn">Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
                     
                 </table>
             <!-- </section> -->
@@ -436,35 +472,6 @@
                     }
                 }
             }
-        }
-
-        function filterTasks(filterType) {
-            // Remove 'active' class from all links
-            document.querySelectorAll('.filter-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Apply the 'active' class to the clicked link
-            const clickedLink = event.target;
-            clickedLink.classList.add('active');
-
-            // Perform the task filtering logic based on the filterType
-            if (filterType === 'today') {
-                // Logic to filter tasks due today
-            } else if (filterType === 'overdue') {
-                // Logic to filter overdue tasks
-            } else if (filterType === 'no_deadline') {
-                // Logic to filter tasks with no deadline
-            }
-        }
-
-        function resetFilters() {
-            // Remove 'active' class from all links
-            document.querySelectorAll('.filter-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Logic to reset all filters and show all tasks
         }
 
     </script>

@@ -494,34 +494,5 @@
             }
         }
 
-        function filterTasks(filterType) {
-            // Remove 'active' class from all links
-            document.querySelectorAll('.filter-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Apply the 'active' class to the clicked link
-            const clickedLink = event.target;
-            clickedLink.classList.add('active');
-
-            // Perform the task filtering logic based on the filterType
-            if (filterType === 'today') {
-                // Logic to filter tasks due today
-            } else if (filterType === 'overdue') {
-                // Logic to filter overdue tasks
-            } else if (filterType === 'no_deadline') {
-                // Logic to filter tasks with no deadline
-            }
-        }
-
-        function resetFilters() {
-            // Remove 'active' class from all links
-            document.querySelectorAll('.filter-link').forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Logic to reset all filters and show all tasks
-        }
-
     </script>
 </html>

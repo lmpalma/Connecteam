@@ -6,9 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <title>Connecteam - Dashboard</title>
+        <title>Connecteam - Edit Task</title>
         <style>
-            body{
+            body {
                 min-height: 100vh;
                 background-image: url('{{ asset('assets/images/bg2.png') }}');
                 background-repeat: no-repeat;
@@ -16,11 +16,14 @@
                 margin: 0;
                 font-family: Verdana, sans-serif;
             }
-            .page{
+            .page {
                 width: 100%;
                 min-height: 90vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
-            .header{
+            .header {
                 width: 100%;
                 background-color: #5b3a9b;
                 align-items: center;
@@ -31,14 +34,14 @@
                 padding: 0 20px;
                 z-index: 1;
             }
-            .web-img{
+            .web-img {
                 margin-left: 20px;
                 padding: 10px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
             }
-            .web-title{
+            .web-title {
                 justify-content: space-around;
                 margin-top: auto;
                 margin-bottom: auto;
@@ -47,7 +50,12 @@
                 font-family: Verdana;
                 color: white;
             }
-            .drop-btn{
+            .page-area {
+                padding: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .drop-btn {
                 color: white;
                 font-size: 38px;
                 border: none;
@@ -56,7 +64,7 @@
                 font-stretch: wider;
                 padding: 12px;
             }
-            .menu{
+            .menu {
                 display: none;
                 position: absolute;
                 background-color: #f9f9f9;
@@ -66,17 +74,19 @@
                 margin-top: 20px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
-            .dropdown-menu{
+
+            .dropdown-menu {
                 position: relative;
                 display: inline-block;
                 margin-left: 24px;
             }
-            .drop-btn:hover{
+            .drop-btn:hover {
                 cursor: pointer;
             }
-            .show {display: block;}
-
-            .img{
+            .show {
+                display: block;
+            }
+            .img {
                 height: 120px;
                 width: 120px;
                 border-radius: 10px;
@@ -85,7 +95,7 @@
                 margin: auto;
                 margin-top: 50px;
             }
-            .employee-name{
+            .employee-name {
                 font-size: 16px;
                 font-family: Verdana;
                 font-weight: bold;
@@ -93,7 +103,7 @@
                 color: black;
                 text-align: center;
             }
-            .menu-list{
+            .menu-list {
                 width: 15vw;
                 text-decoration: none;
                 font-size: 16px;
@@ -106,85 +116,49 @@
                 display: inline-block;
                 color: black;
             }
-
-            .dashboard {
-                flex: 1;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 20px;
-            }
-
-            .box {
-                width: 35%;
-                height: 20vh;
-                margin: 10px 10px;
-                border-radius: 15px;
-                background-color: #e3e8e8;
-                border: solid #5b3a9b 2px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            .box i {
-                font-size: 26px;
-                color: #5b3a9b;
-                margin-bottom: 15px;
-            }
-
-            .box p {
-                margin: 0;
-                font-size: 18px;
-                color: #5b3a9b;
-            }
-
-            .container{
-                width: 25vw;
-                height: 50vh;
+            .container {
+                width: 90%;
+                max-width: 400px;
                 padding: 40px;
-                margin-left: auto;
-                margin-right: auto;
-                background-color: lightgray;
+                border: solid #5b3a9b 2px;
+                background-color: #e3e8e8;
                 border-radius: 20px;
-                margin-top: 30px;
-                margin-bottom: 30px;
+                text-align: center;
             }
             .container-name{
                 font-size: 18px;
                 font-family: Verdana;
                 text-align: center;
             }
-            
-            p{
-                font-size: 12px;
+            h2 {
+                font-size: 24px;
                 font-family: Verdana;
-                text-align: center;
+                color: #5b3a9b;
+                margin-bottom: 20px;
             }
-            a{
-                font-style: italic;
-                color: black;
+            .info {
+                font-size: 16px;
+                margin: 10px 0;
             }
-            
-            .footer-bar {
-                height: 10vh;
-                background-color: #5b3a9b;
-                color: #fff;
-                text-align: center;
-                padding: 30px;
-                margin-top: auto;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .censored {
+                color: gray;
             }
-            h4 {
-                font-size: 12px;
-                margin: 0;
+            .edit-btn {
+                margin: 25px auto 0; 
+                display: block;
+                width: 50%;
+                height: 30px;
+                font-size: 15px;
+                background-color: rgb(46, 19, 83);
+                border-radius: 10px;
+                color: white;
+                border: none;
             }
-            
+            .edit-btn:hover {
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                cursor: pointer;
+            }
             .footer-bar {
                 height: 10vh;
                 background-color: #5b3a9b;
@@ -198,17 +172,18 @@
             }
             h4 {
                 font-size: 12px;
-                margin: 0;
+                text-align: center;
+                padding: 20px;
+                color: white;
             }
-            
-            a{
+            a {
                 text-decoration: none;
             }
-            a:hover{
+            a:hover {
                 background: rgba(46, 19, 83, 0.3);
                 color: rgb(41, 6, 75);
             }
-            .current-page{
+            .current-page {
                 background: rgba(46, 19, 83, 0.5);
                 text-decoration: none;
                 width: 15vw;
@@ -223,6 +198,60 @@
                 display: inline-block;
                 color: rgb(41, 6, 75);
             }
+            .userdp {
+                width: 70px;
+                height: 70px;
+                margin: 20px;
+                border-radius: 20px;
+                border: solid black 1px;
+            }
+            h3 {
+                font-family: Verdana;
+                font-size: 16px;
+                margin-top: 40px;
+            }
+            p {
+                margin: 20px;
+            }
+
+            .alert-success {
+                padding: 10px;
+                margin: 10px 0; 
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .alert-error {
+                padding: 10px;
+                margin: 10px 0;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .status-container {
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+            }
+
+            .status-select {
+                margin-right: 10px;ton */
+            }
+
 
             @media (max-width: 768px) {
                 .left-nav {
@@ -235,19 +264,25 @@
         </style>
     </head>
     <body>
-        <div class = "header">
-            <div class = "dropdown-menu">
-                <button type = "button" class = "drop-btn" onClick = "menuFunction()"><i class="fa fa-bars"></i></button>
-                <div class = "menu" id = "menuDropdown">
-                    <div class = "img"></div>
-                    <h3 class = "employee-name">{{ $user->name }}</h3>
+        <div class="header">
+            <div class="dropdown-menu">
+                <button type="button" class="drop-btn" onClick="menuFunction()"><i class="fa fa-bars"></i></button>
+                <div class="menu" id="menuDropdown">
+                    <div class="img"></div>
+                    <h3 class="employee-name">{{ $user->name }}</h3>
                     <br><br>
-                    <a class = "current-page" href = "{{ route('employee.dashboard') }}"><i class="fa fa-layer-group"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" href = "{{ route('employee.task.index') }}"><i class="fa fa-rectangle-list"></i>
-                    <span style="margin-left: 10px; font-style: italic;">My Tasks</a>
-                    <a class = "menu-list" href = "{{ route('employee.profile.index') }}"><i class="fa fa-circle-user"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Profile</a>
+                    <a class="menu-list" href="{{ route('employee.dashboard') }}">
+                        <i class="fa fa-layer-group"></i>
+                        <span style="margin-left: 10px; font-style: italic;">Dashboard</span>
+                    </a>
+                    <a class="menu-list" href="{{ route('employee.task.index') }}">
+                        <i class="fa fa-rectangle-list"></i>
+                        <span style="margin-left: 10px; font-style: italic;">My Tasks</span>
+                    </a>
+                    <a class="current-page" href="{{ route('employee.profile.index') }}">
+                        <i class="fa fa-circle-user"></i>
+                        <span style="margin-left: 10px; font-style: italic;">Profile</span>
+                    </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
@@ -258,39 +293,40 @@
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
-            <h1 class = "web-title">Connecteam</h1>
+            <h1 class="web-title">Connecteam</h1>
         </div>
-        <div class = "page">
-            <section class="dashboard">
-                <div class="box">
-                    <i class="fa fa-tasks"></i>
-                    <p>{{ $taskCount }} Overall Tasks</p>
+        <div class="page">
+        <div class="container">
+            <h2>Task Details</h2>
+                <div class="info">
+                    <strong>Title:</strong> {{ $task->title }}
                 </div>
-                <div class="box">
-                    <i class="fa fa-triangle-exclamation"></i>
-                    <p>{{ $overdueTaskCount }} Overdue Tasks</p>
+                <div class="info">
+                    <strong>Description:</strong> {{ $task->description }}
                 </div>
-                <div class="box">
-                    <i class="fa fa-business-time"></i>
-                    <p>{{ $noDeadlineTaskCount }} Tasks with No Deadline</p>
+                <div class="info">
+                    <strong>Assigned To:</strong> {{ $task->assignedUser ? $task->assignedUser->name : 'Unassigned' }}
                 </div>
-                <div class="box">
-                    <i class="fa fa-clock"></i>
-                    <p>{{ $pendingTaskCount }} Pending Tasks</p>
+                <div class="info">
+                    <strong>Due Date:</strong> {{ $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : 'N/A' }}
                 </div>
-                <div class="box">
-                    <i class="fa fa-spinner"></i>
-                    <p>{{ $inProgressTaskCount }} Tasks In Progress</p>
+                <div class="info">
+                    <strong>Status:</strong>
+                    <form action="{{ route('employee.task.update', $task->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('PUT')
+                        <select name="status" style="margin-left: 10px;">
+                            <option value="Pending" {{ $task->status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                            <option value="In Progress" {{ $task->status === 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                            <option value="Completed" {{ $task->status === 'Completed' ? 'selected' : '' }}>Completed</option>
+                        </select>
+                        <button type="submit" class="edit-btn">Update Status</button>
+                    </form>
                 </div>
-                <div class="box">
-                    <i class="fa fa-check"></i>
-                    <p>{{ $completedTaskCount }} Completed Tasks</p>
-                </div>
-            </section>
+            </div>
         </div>
-    </body>
     <footer>
-        <div class = "footer-bar">
+        <div class="footer-bar">
             <h4>©️ 2024 - Connecteam | All rights reserved.</h4>
         </div>
     </footer>
@@ -298,12 +334,10 @@
         function menuFunction() {
             document.getElementById("menuDropdown").classList.toggle("show");
         }
-
         window.onclick = function(event) {
             if (!event.target.matches('.drop-btn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-menu");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
+                for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
                     if (openDropdown.classList.contains('show')) {
                         openDropdown.classList.remove('show');

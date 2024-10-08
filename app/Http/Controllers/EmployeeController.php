@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\employee;
 use App\Models\User;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -18,15 +19,75 @@ class EmployeeController extends Controller
     {
         $user = Auth::user();
 
-        return view('employee.dashboard', ['user' => $user]);
+        $taskCount = Task::where('assigned_to', $user->id)->count();
+        $overdueTaskCount = Task::where('assigned_to', $user->id)
+            ->where('status', '!=', 'Completed')
+            ->where('due_date', '<', now())
+            ->count();
+        $noDeadlineTaskCount = Task::where('assigned_to', $user->id)
+            ->whereNull('due_date')
+            ->count();
+        $pendingTaskCount = Task::where('assigned_to', $user->id)
+            ->where('status', 'Pending')
+            ->count();
+        $inProgressTaskCount = Task::where('assigned_to', $user->id)
+            ->where('status', 'In Progress')
+            ->count();
+        $completedTaskCount = Task::where('assigned_to', $user->id)
+            ->where('status', 'Completed')
+            ->count();
+
+        return view('employee.dashboard', [
+            'user' => $user,
+            'taskCount' => $taskCount,
+            'overdueTaskCount' => $overdueTaskCount,
+            'noDeadlineTaskCount' => $noDeadlineTaskCount,
+            'pendingTaskCount' => $pendingTaskCount,
+            'inProgressTaskCount' => $inProgressTaskCount,
+            'completedTaskCount' => $completedTaskCount,
+        ]);
     }
 
     public function myTasks() 
     {
-
         $user = Auth::user();
 
-        return view('employee.task.index', ['user' => $user]);
+        $tasks = Task::where('assigned_to', $user->id)->get(); 
+
+        return view('employee.task.index', [
+            'user' => $user,
+            'tasks' => $tasks
+        ]);
+    }
+
+    public function editTask($id) 
+    {
+        $user = Auth::user();
+
+        $task = Task::where('id', $id)
+            ->where('assigned_to', $user->id)
+            ->firstOrFail();
+
+        return view('employee.task.edit', [
+            'user' => $user,
+            'task' => $task
+        ]);
+    }
+
+    public function updateTask(Request $request, $id) 
+    {
+        $user = Auth::user();
+
+        $request->validate([
+            'status' => 'required|in:Pending,In Progress,Completed',
+        ]);
+
+        $task = Task::where('id', $id)->where('assigned_to', $user->id)->firstOrFail();
+
+        $task->status = $request->status;
+        $task->save();
+
+        return redirect()->route('employee.task.index')->with('success', 'Task updated successfully.');
     }
 
     public function viewProfile() 

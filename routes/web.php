@@ -53,6 +53,8 @@ Route::middleware(['isEmployee'])->group(function () {
 
     // task routes
     Route::get('/employee/task/index', [EmployeeController::class, 'myTasks'])->name('employee.task.index');
+    Route::get('/employee/task/{id}/edit', [EmployeeController::class, 'editTask'])->name('employee.task.edit');
+    Route::put('/employee/task/{id}', [EmployeeController::class, 'updateTask'])->name('employee.task.update');
 
     // profile routes
     Route::get('/employee/profile', [EmployeeController::class, 'viewProfile'])->name('employee.profile.index');
