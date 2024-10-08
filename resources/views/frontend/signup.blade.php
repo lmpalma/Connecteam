@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="./assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
     <title>Connecteam - SIGNUP</title>
     <style>
         body {
             min-height: 100vh;
-            background-image: url("./assets/images/bg1.png");
+            background-image: url("{{ asset('assets/images/bg1.png') }}");
             background-repeat: no-repeat;
             background-size: cover;
             margin: 0;
@@ -154,7 +154,7 @@
 </head>
 <body>
     <div class="header">
-        <img src="./assets/images/icon.png" class="web-img" alt="Logo">
+        <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Logo">
         <h1 class="web-title">Connecteam</h1>
     </div>
     <div class="page-area">

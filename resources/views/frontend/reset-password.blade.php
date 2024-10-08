@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
-    <title>Connecteam - LOGIN</title>
+    <title>Connecteam - Reset Password</title>
     <style>
         body {
             min-height: 100vh;
@@ -175,8 +175,8 @@
         <h1 class="web-title">Connecteam</h1>
     </div>
     <div class="page-area">
-        <h1 class="welcome">WELCOME BACK!</h1>
-        <p class="intro">We are glad to see you again.</p>
+        <h1 class="welcome">Reset Password</h1>
+        <p class="intro">Please enter your new password below.</p>
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -195,19 +195,22 @@
         @endif
         
         <div class="container">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('password.update') }}">
                 @csrf
+                <input type="hidden" name="token" value="{{ $token }}">
                 
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>
                 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password" class="input-box" placeholder="Enter your new password" required>
                 
-                <p>Forgot password? <a href="{{ route('frontend.forgot-password') }}">Click Here</a></p>
-                <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
+                <label for="password_confirmation">Confirm Password:</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" class="input-box" placeholder="Confirm your new password" required>
                 
-                <button type="submit" class="login-btn">LOGIN</button>
+                <button type="submit" class="resetPass-btn">RESET PASSWORD</button>
+
+                <p>Go back to <a href="{{ route('frontend.login') }}">Login</a></p>
             </form>
         </div>
     </div>

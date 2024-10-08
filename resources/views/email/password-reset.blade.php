@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome to Connecteam</title>
+    <title>Password Reset Request</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -26,12 +26,6 @@
             font-size: 16px;
             line-height: 1.5;
         }
-        .credentials {
-            background-color: #f0f4fa;
-            padding: 10px;
-            border-radius: 6px;
-            margin: 15px 0;
-        }
         .button {
             display: inline-block;
             background-color: #5b3a9b;
@@ -50,15 +44,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome, {{ $user->name }}!</h1>
-        <p>Thank you for joining Connecteam! Your account has been created successfully.</p>
-        <p>Here are your login credentials:</p>
-        <div class="credentials">
-            <p><strong>Email:</strong> {{ $user->email }}</p>
-            <p><strong>Password:</strong> {{ $password }}</p>
-        </div>
-        <p>You can now log in and start managing your tasks:</p>
-        <a href="{{ route('frontend.login') }}" class="button">Log in to Connecteam</a>
+        <h1>Password Reset Request</h1>
+        <p>Hi {{ $user->name }},</p>
+        <p>You requested a password reset for your Connecteam account.</p>
+        <p>Please click the button below to reset your password:</p>
+        <a href="{{ $resetUrl }}" class="button">Reset Password</a>
+        <p>If you did not request a password reset, please ignore this email.</p>
         <p class="footer">Best regards,<br>Connecteam</p>
     </div>
 </body>

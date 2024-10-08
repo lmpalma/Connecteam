@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
-    <title>Connecteam - LOGIN</title>
+    <link rel="icon" type="image/png" href="./assets/images/favicon.ico">
+    <title>Connecteam - Forgot Password</title>
     <style>
         body {
             min-height: 100vh;
-            background-image: url("{{ asset('assets/images/bg1.png') }}");
+            background-image: url("./assets/images/bg1.png");
             background-repeat: no-repeat;
             background-size: cover;
             margin: 0;
@@ -171,12 +171,12 @@
 </head>
 <body>
     <div class="header">
-        <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Logo">
+        <img src="./assets/images/icon.png" class="web-img" alt="Logo">
         <h1 class="web-title">Connecteam</h1>
     </div>
     <div class="page-area">
-        <h1 class="welcome">WELCOME BACK!</h1>
-        <p class="intro">We are glad to see you again.</p>
+        <h1 class="welcome">Forgot Password</h1>
+        <p class="intro">You will receive a link to reset your password.</p>
 
         @if(session('success'))
             <div class="alert alert-success">
@@ -195,19 +195,14 @@
         @endif
         
         <div class="container">
-            <form method="POST" action="{{ route('login') }}">
+            <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
-                
-                <p>Forgot password? <a href="{{ route('frontend.forgot-password') }}">Click Here</a></p>
-                <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
-                
-                <button type="submit" class="login-btn">LOGIN</button>
+                <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>                
+                <button type="submit" class="sendEmail-btn">SEND EMAIL</button>
+
+                <p>Go back to <a href="{{ route('frontend.login') }}">Login</a></p>
             </form>
         </div>
     </div>
