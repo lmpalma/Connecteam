@@ -7,11 +7,11 @@
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <title>Connecteam - Manage Users</title>
+        <title>Connecteam - Edit Task</title>
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg2.png') }}');
+                background-image: url('{{ asset('assets/images/bg1.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
@@ -47,12 +47,6 @@
                 font-size: 20px;
                 font-family: Verdana;
                 color: white;
-            }
-            .page-area{
-                padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                
             }
             .drop-btn{
                 color: white;
@@ -100,6 +94,21 @@
                 color: black;
                 text-align: center;
             }
+
+            section {
+                width: 40vw;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
+                padding: 30px;
+                background-color: white;
+                border-radius: 20px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                
+            }
+
             .menu-list{
                 width: 15vw;
                 text-decoration: none;
@@ -129,72 +138,111 @@
                 font-family: Verdana;
                 text-align: center;
             }
-            label{
-                font-size: 12px;
+            label {
+                font-size: 14px;
                 font-family: Verdana;
+                color: rgb(50, 50, 50);
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
             }
-            .input-box{
-                width: 28vw;
+
+            input[type="text"], textarea, input[type="date"], select {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border: solid 1px #cccccc;
+                background: rgba(252, 252, 252, 0.9);
+                font-family: Verdana;
+                font-size: 14px;
+                transition: border-color 0.3s ease;
+            }
+
+            input[type="text"]:focus, textarea:focus, input[type="date"]:focus, select:focus {
+                border-color: #5b3a9b;
+                outline: none;
+            }
+
+            /* .input-box{
+                min-width: 38vw;
+                max-width: 38vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 25px;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
             }
             .input-box2{
-                min-width: 28vw;
-                max-width: 28vw;
+                min-width: 38vw;
+                max-width: 38vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 10vh;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
             }
-            select{
-                width: 18vw;
+            .input-box3{
+                width: 15vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 25px;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            } */
+            .create-button {
+                width: 50%;
+                padding: 10px;
+                font-size: 16px;
+                background-color: #5b3a9b;
+                border-radius: 10px;
+                color: white;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .create-button:hover {
+                background-color: #4a318a;
             }
             p{
                 font-size: 12px;
                 font-family: Verdana;
                 text-align: center;
             }
-            .nav{
+            a{
                 font-style: italic;
                 color: black;
             }
-            /* section{
-                padding: 20px;
-                display: inline-block;
-                align-items: center;
-                width: 70vw;
-            } */
-            .dashboard-row{
-                width: 100%;
+            
+            .dashboard{
+                width:100%;
                 display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
+                margin-left: 50px;
             }
             .box{
-                width: 20%;
-                min-height: 280px;
+                width: 20vw;
+                height: 25vh;
                 border-radius: 10px;
-                margin: auto;
-                background-color: rgb(183, 121, 255);
-                opacity: 90%;
-                display: flex;
-                flex-wrap: wrap;
+                margin: 40px;
+                background-color: darkseagreen;
+                opacity: 70%;
+                display: inline-block;
                 border: solid black 2px;
-                margin-bottom: 30px;
             }
             h2{
-                font-size: 24px;
+                font-size: 25px;
                 font-family: Verdana;
                 text-align: center;
-                margin-top: 50px;
+                margin-left: 20px;
                 color: #5b3a9b;
-
             }
             
             .footer-bar{
@@ -211,8 +259,7 @@
             h4{
                 font-size: 12px;
                 text-align: center;
-                padding: 20px;
-                color:white;
+                padding: 30px;
             }
             a{
                 text-decoration: none;
@@ -236,122 +283,6 @@
                 display: inline-block;
                 color: rgb(41, 6, 75);
             }
-            .userdp{
-                width: 70px;
-                height: 70px;
-                margin: 20px;
-                border-radius: 20px;
-                border: solid black 1px;
-            }
-            h3{
-                font-family: Verdana;
-                font-size: 16px;
-                margin-top: 40px;
-            }
-            p{
-                margin: 20px;
-            }
-            .view-btn{
-                margin-top: 25px;
-                margin-inline-start: 25%;
-                width: 50%;
-                height: 30px;
-                font-size: 15px;
-                background-color: rgb(46, 19, 83);
-                border-radius: 10px;
-                color: white;
-            }
-            .view-btn:hover{
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
-                cursor: pointer;
-            }
-            .btn-container{
-                width: 100%;
-                height: 50px;
-            }
-            .addUser{
-                margin: auto;
-                display: block;
-                width: 120px;
-                height: 30px;
-                font-size: 15px;
-                background: rgba(46, 19, 83, 0.8);
-                border-radius: 10px;
-                color: white;
-            }
-            .addUser:hover{
-                background-color: rgb(255, 255, 255);
-                color: black;
-                cursor: pointer;
-            }
-
-            .main-table {
-            width: 80%;
-            margin: 30px auto;
-            border-collapse: collapse;
-            background-color: lightgray;
-            border-radius: 10px;
-            overflow: hidden;
-            }
-            .main-table th, .main-table td {
-                border: 1px solid #ddd;
-                padding: 12px;
-                text-align: center;
-            }
-            .main-table th {
-                background-color: #5b3a9b;
-                color: white;
-            }
-            .edit-btn, .delete-btn {
-                text-decoration: none;
-                padding: 5px 10px;
-                border-radius: 5px;
-                color: white;
-                transition: background-color 0.3s;
-            }
-            .edit-btn {
-                background-color: rgb(46, 19, 83);
-            }
-            .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
-            }
-            .delete-btn {
-                background-color: red;
-            }
-            .delete-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
-            }
-
-            .alert-success {
-                padding: 10px;
-                margin: 10px 0; 
-                background-color: #d4edda;
-                color: #155724;
-                border: 1px solid #c3e6cb;
-                border-radius: 5px;
-                width: 100%;
-                max-width: 350px;
-                text-align: center;
-                font-family: Tahoma;
-                font-size: 16px;
-            }
-
-            .alert-error {
-                padding: 10px;
-                margin: 10px 0;
-                background-color: #f8d7da;
-                color: #721c24;
-                border: 1px solid #f5c6cb;
-                border-radius: 5px;
-                width: 100%;
-                max-width: 350px;
-                text-align: center;
-                font-family: Tahoma;
-                font-size: 16px;
-            }
 
             @media (max-width: 768px) {
                 .left-nav {
@@ -374,9 +305,9 @@
                     <br><br>
                     <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
+                    <a class = "current-page" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
-                    <a class = "current-page" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
+                    <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
                     <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
@@ -386,54 +317,48 @@
                     <a class="menu-list" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-arrow-right-to-bracket"></i>
                         <span style="margin-left: 10px; font-style: italic;">Log Out</span>
-                    </a>                
+                    </a>              
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <!-- <section> -->
-                <h2>MANAGE USERS</h2>
-                <div class = "btn-container">
-                    <button type="button" class="addUser" onclick="window.location.href='{{ route('admin.user.create') }}'">Add User</button>
-                </div>
+        <section>
+        <h2>EDIT TASK</h2>
+        <form action="{{ route('admin.task.update', $task->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-                @if (session('success'))
-                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                
-                <table class="main-table">
-                    <tr>
-                        <th>#</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                    
-                    @foreach($users as $key => $user)
-                    <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn">Edit</a>
-                            <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" 
-                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }">Delete</a>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                    
-                </table>
-            <!-- </section> -->
+            <label>Title</label><br>
+            <input type="text" name="title" value="{{ old('title', $task->title) }}" required>
+            <br><br>
+            
+            <label>Description</label><br>
+            <textarea name="description" required>{{ old('description', $task->description) }}</textarea>
+            <br><br>
+            
+            <label>Due Date</label><br>
+            <input type="date" name="due_date" value="{{ old('due_date', $task->due_date ? $task->due_date->format('Y-m-d') : '') }}" />
+            <br><br>
+            
+            <label>Assigned To:</label><br>
+            <select name="assigned_to" required>
+                <option value="">Select Employee</option>
+                @foreach($employees as $employee)
+                    <option value="{{ $employee->id }}" {{ $employee->id == $task->assigned_to ? 'selected' : '' }}>
+                        {{ $employee->name }}
+                    </option>
+                @endforeach
+            </select>
+            <br>
+            
+            <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <button type="submit" class="create-button">UPDATE</button>
+            </div>
+        </form>
+
+        </section>
         </div>
     </body>
     <footer>

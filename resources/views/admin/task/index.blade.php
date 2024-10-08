@@ -348,6 +348,34 @@
                 color: rgb(0, 0, 0);
             }
 
+            .alert-success {
+                padding: 10px;
+                margin: 10px 0; 
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .alert-error {
+                padding: 10px;
+                margin: 10px 0;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
             @media (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
@@ -395,36 +423,49 @@
                 </div>
 
                 <div class="filter-container">
-                    <a href="#" class="filter-link" onclick="filterTasks('today')">Due Today</a>
-                    <a href="#" class="filter-link" onclick="filterTasks('overdue')">Overdue</a>
-                    <a href="#" class="filter-link" onclick="filterTasks('no_deadline')">No Deadline</a>
-                    <a href="#" class="filter-link" onclick="resetFilters()">Reset</a>
+                    <a href="{{ route('admin.task.index', ['filter' => 'due_today']) }}" class="filter-link" onclick="filterTasks('today')">Due Today</a>
+                    <a href="{{ route('admin.task.index', ['filter' => 'overdue']) }}" class="filter-link" onclick="filterTasks('overdue')">Overdue</a>
+                    <a href="{{ route('admin.task.index', ['filter' => 'no_deadline']) }}" class="filter-link" onclick="filterTasks('no_deadline')">No Deadline</a>
+                    <a href="{{ route('admin.task.index') }}" class="filter-link" onclick="resetFilters()">Reset</a>
                 </div>
+
+                @if (session('success'))
+                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 
                 <table class="main-table">
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Assigned To</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                @foreach($tasks as $index => $task)
                     <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Assigned To</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th>Action</th>
-
-                    </tr>
-                    
-                    <tr>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
-                        <td>#</td>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ $task->title }}</td>
+                        <td>{{ $task->description }}</td>
+                        <td>{{ $task->assignedUser ? $task->assignedUser->name : 'Unassigned' }}</td>
                         <td>
-                            <a href="#" class="edit-btn">Edit</a>
-                            <a href="#" class="delete-btn">Delete</a>
+                            {{ $task->due_date ? $task->due_date->format('Y-m-d') : 'N/A' }}
+                        </td>
+                        <td>{{ $task->status }}</td>
+                        <td>
+                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn">Edit</a>
+                            <a href="{{ route('admin.task.delete', $task->id) }}" class="delete-btn" 
+                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-form-{{ $task->id }}').submit(); }">Delete</a>
+                            <form id="delete-form-{{ $task->id }}" action="{{ route('admin.task.delete', $task->id) }}" method="POST" style="display: none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
                         </td>
                     </tr>
+                @endforeach
                     
                 </table>
             <!-- </section> -->

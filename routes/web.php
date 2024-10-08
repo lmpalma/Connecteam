@@ -9,7 +9,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ForgotPasswordController;
 
-
 // AUTHENTICATION ROUTES
 Route::get('/',[HomeController::class,'index'])->name('frontend.home');
 Route::get('/login',[AuthController::class,'loginPage'])->name('frontend.login');
@@ -32,12 +31,18 @@ Route::middleware(['isAdmin'])->group(function () {
     // task routes
     Route::get('/admin/task/create',[AdminController::class,'create'])->name('admin.task.create');
     Route::get('/admin/task/index',[AdminController::class,'viewTasks'])->name('admin.task.index');
+    Route::post('/admin/task/store', [AdminController::class, 'storeTask'])->name('admin.task.store');
+    Route::get('admin/task/{id}/edit', [AdminController::class, 'editTask'])->name('admin.task.edit');
+    Route::put('admin/task/{id}', [AdminController::class, 'updateTask'])->name('admin.task.update');
+    Route::delete('/admin/task/{id}', [AdminController::class, 'deleteTask'])->name('admin.task.delete');
 
     // user crud routes
     Route::get('/admin/user/index',[AdminController::class,'viewUsers'])->name('admin.user.index');
     Route::get('/admin/user/create',[AdminController::class,'createUser'])->name('admin.user.create');
     Route::post('/admin/user/store',[AdminController::class,'storeUser'])->name('admin.user.store');
-
+    Route::get('/admin/user/{id}/edit', [AdminController::class, 'editUser'])->name('admin.user.edit');
+    Route::put('/admin/user/{id}', [AdminController::class, 'updateUser'])->name('admin.user.update');
+    Route::delete('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
 
 });
 

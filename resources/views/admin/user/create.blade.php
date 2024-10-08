@@ -347,6 +347,17 @@
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
+
+        @if ($errors->any())
+            <div class="alert-error" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <section>
             <h2>ADD USER</h2>
             <form method="POST" action="{{ route('admin.user.store') }}">

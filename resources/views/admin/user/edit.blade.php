@@ -7,11 +7,11 @@
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <title>Connecteam - Manage Users</title>
+        <title>Connecteam - Add User</title>
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg2.png') }}');
+                background-image: url('{{ asset('assets/images/bg1.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
@@ -47,12 +47,6 @@
                 font-size: 20px;
                 font-family: Verdana;
                 color: white;
-            }
-            .page-area{
-                padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                
             }
             .drop-btn{
                 color: white;
@@ -100,6 +94,21 @@
                 color: black;
                 text-align: center;
             }
+
+            section {
+                width: 40vw;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
+                padding: 30px;
+                background-color: white;
+                border-radius: 20px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                
+            }
+
             .menu-list{
                 width: 15vw;
                 text-decoration: none;
@@ -129,72 +138,106 @@
                 font-family: Verdana;
                 text-align: center;
             }
-            label{
-                font-size: 12px;
+            label {
+                font-size: 14px;
                 font-family: Verdana;
+                color: rgb(50, 50, 50);
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
             }
-            .input-box{
-                width: 28vw;
+
+            input[type="text"], input[type="email"], input[type="password"] {
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 15px; 
+                border-radius: 10px;
+                border: solid 1px #cccccc;
+                background: rgba(252, 252, 252, 0.9);
+                font-family: Verdana;
+                font-size: 16px;
+                transition: border-color 0.3s ease;
+            }
+
+            /* .input-box{
+                min-width: 38vw;
+                max-width: 38vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 25px;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
             }
             .input-box2{
-                min-width: 28vw;
-                max-width: 28vw;
+                min-width: 38vw;
+                max-width: 38vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 10vh;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
             }
-            select{
-                width: 18vw;
+            .input-box3{
+                width: 15vw;
                 margin: 2px;
                 margin-left: 10px;
                 height: 25px;
                 font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            } */
+            .update-button {
+                width: 50%;
+                padding: 10px;
+                font-size: 16px;
+                background-color: #5b3a9b;
+                border-radius: 10px;
+                color: white;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+            .update-button:hover {
+                background-color: #4a318a;
             }
             p{
                 font-size: 12px;
                 font-family: Verdana;
                 text-align: center;
             }
-            .nav{
+            a{
                 font-style: italic;
                 color: black;
             }
-            /* section{
-                padding: 20px;
-                display: inline-block;
-                align-items: center;
-                width: 70vw;
-            } */
-            .dashboard-row{
-                width: 100%;
+            
+            .dashboard{
+                width:100%;
                 display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
+                margin-left: 50px;
             }
             .box{
-                width: 20%;
-                min-height: 280px;
+                width: 20vw;
+                height: 25vh;
                 border-radius: 10px;
-                margin: auto;
-                background-color: rgb(183, 121, 255);
-                opacity: 90%;
-                display: flex;
-                flex-wrap: wrap;
+                margin: 40px;
+                background-color: darkseagreen;
+                opacity: 70%;
+                display: inline-block;
                 border: solid black 2px;
-                margin-bottom: 30px;
             }
             h2{
-                font-size: 24px;
+                font-size: 25px;
                 font-family: Verdana;
                 text-align: center;
-                margin-top: 50px;
+                margin-left: 20px;
                 color: #5b3a9b;
-
             }
             
             .footer-bar{
@@ -211,8 +254,7 @@
             h4{
                 font-size: 12px;
                 text-align: center;
-                padding: 20px;
-                color:white;
+                padding: 30px;
             }
             a{
                 text-decoration: none;
@@ -235,94 +277,6 @@
                 text-align: center;
                 display: inline-block;
                 color: rgb(41, 6, 75);
-            }
-            .userdp{
-                width: 70px;
-                height: 70px;
-                margin: 20px;
-                border-radius: 20px;
-                border: solid black 1px;
-            }
-            h3{
-                font-family: Verdana;
-                font-size: 16px;
-                margin-top: 40px;
-            }
-            p{
-                margin: 20px;
-            }
-            .view-btn{
-                margin-top: 25px;
-                margin-inline-start: 25%;
-                width: 50%;
-                height: 30px;
-                font-size: 15px;
-                background-color: rgb(46, 19, 83);
-                border-radius: 10px;
-                color: white;
-            }
-            .view-btn:hover{
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
-                cursor: pointer;
-            }
-            .btn-container{
-                width: 100%;
-                height: 50px;
-            }
-            .addUser{
-                margin: auto;
-                display: block;
-                width: 120px;
-                height: 30px;
-                font-size: 15px;
-                background: rgba(46, 19, 83, 0.8);
-                border-radius: 10px;
-                color: white;
-            }
-            .addUser:hover{
-                background-color: rgb(255, 255, 255);
-                color: black;
-                cursor: pointer;
-            }
-
-            .main-table {
-            width: 80%;
-            margin: 30px auto;
-            border-collapse: collapse;
-            background-color: lightgray;
-            border-radius: 10px;
-            overflow: hidden;
-            }
-            .main-table th, .main-table td {
-                border: 1px solid #ddd;
-                padding: 12px;
-                text-align: center;
-            }
-            .main-table th {
-                background-color: #5b3a9b;
-                color: white;
-            }
-            .edit-btn, .delete-btn {
-                text-decoration: none;
-                padding: 5px 10px;
-                border-radius: 5px;
-                color: white;
-                transition: background-color 0.3s;
-            }
-            .edit-btn {
-                background-color: rgb(46, 19, 83);
-            }
-            .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
-            }
-            .delete-btn {
-                background-color: red;
-            }
-            .delete-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
             }
 
             .alert-success {
@@ -386,54 +340,50 @@
                     <a class="menu-list" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-arrow-right-to-bracket"></i>
                         <span style="margin-left: 10px; font-style: italic;">Log Out</span>
-                    </a>                
+                    </a>              
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <!-- <section> -->
-                <h2>MANAGE USERS</h2>
-                <div class = "btn-container">
-                    <button type="button" class="addUser" onclick="window.location.href='{{ route('admin.user.create') }}'">Add User</button>
+
+        @if ($errors->any())
+            <div class="alert-error" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <section>
+        <h2>Edit User</h2>
+            <form action="{{ route('admin.user.update', $editUser->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" name="name" id="name" class="input-box" value="{{ old('name', $editUser->name) }}" required>
                 </div>
 
-                @if (session('success'))
-                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                
-                <table class="main-table">
-                    <tr>
-                        <th>#</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                    
-                    @foreach($users as $key => $user)
-                    <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
-                        <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn">Edit</a>
-                            <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" 
-                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }">Delete</a>
-                            <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                    
-                </table>
-            <!-- </section> -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="input-box" value="{{ old('email', $editUser->email) }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="input-box" placeholder="Leave blank to keep current password">
+                </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="submit" class="update-button">UPDATE USER</button>
+                </div>
+            </form>
+        </section>
         </div>
     </body>
     <footer>

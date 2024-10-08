@@ -263,40 +263,40 @@
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <section class="dashboard">
-                <div class="box">
-                    <i class="fa fa-users"></i>
-                    <p>{{ $employeeCount }} Employees</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-tasks"></i>
-                    <p># All Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-check"></i>
-                    <p># Completed Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-clock"></i>
-                    <p># Pending Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-spinner"></i>
-                    <p># Tasks In Progress</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-triangle-exclamation"></i>
-                    <p># Overdue Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-business-time"></i>
-                    <p># Tasks with No Deadline</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-calendar-day"></i>
-                    <p># Tasks Due Today</p>
-                </div>
-            </section>
+        <section class="dashboard">
+            <div class="box">
+                <i class="fa fa-users"></i>
+                <p>{{ $employeeCount }} Employees</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-tasks"></i>
+                <p>{{ $taskCount }} All Tasks</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-check"></i>
+                <p>{{ $completedTaskCount }} Completed Tasks</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-clock"></i>
+                <p>{{ $pendingTaskCount }} Pending Tasks</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-spinner"></i>
+                <p>{{ $inProgressTaskCount }} Tasks In Progress</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-triangle-exclamation"></i>
+                <p>{{ $overdueTaskCount }} Overdue Tasks</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-business-time"></i>
+                <p>{{ $noDeadlineTaskCount }} Tasks with No Deadline</p>
+            </div>
+            <div class="box">
+                <i class="fa fa-calendar-day"></i>
+                <p>{{ $tasksDueTodayCount }} Tasks Due Today</p>
+            </div>
+        </section>
         </div>
     </body>
     <footer>

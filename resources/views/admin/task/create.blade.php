@@ -324,26 +324,32 @@
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <section>
-                <h2>CREATE TASK</h2>
-                    <label>Title</label><br>
-                    <input type = "text">
-                    <br><br>
-                    <label>Description</label><br>
-                    <textarea></textarea>
-                    <br><br>
-                    <label>Due Date</label><br>
-                    <input type = "date">
-                    <br><br>
-                    <label>Assigned To:</label><br>
-                    <select>
-                        <option>role1</option>
-                        <option>role2</option>
-                    </select>
-                    <br>
-                    <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <button type ="button" class = "create-button">CREATE</button>
-            </section>
+        <section>
+            <h2>CREATE TASK</h2>
+            <form action="{{ route('admin.task.store') }}" method="POST">
+                @csrf
+                <label>Title</label><br>
+                <input type="text" name="title" required>
+                <br><br>
+                <label>Description</label><br>
+                <textarea name="description" required></textarea>
+                <br><br>
+                <label>Due Date</label><br>
+                <input type="date" name="due_date" />
+                <br><br>
+                <label>Assigned To:</label><br>
+                <select name="assigned_to" required>
+                    <option value="">Select Employee</option>
+                    @foreach($employees as $employee)
+                        <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                    @endforeach
+                </select>
+                <br>
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="submit" class="create-button">CREATE</button>
+                </div>
+            </form>
+        </section>
         </div>
     </body>
     <footer>
