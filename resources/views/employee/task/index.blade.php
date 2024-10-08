@@ -7,7 +7,7 @@
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        <title>Connecteam - Manage Users</title>
+        <title>Connecteam - My Tasks</title>
         <style>
             body{
                 min-height: 100vh;
@@ -92,7 +92,7 @@
                 margin: auto;
                 margin-top: 50px;
             }
-            .admin-name{
+            .employee-name{
                 font-size: 16px;
                 font-family: Verdana;
                 font-weight: bold;
@@ -270,7 +270,7 @@
                 width: 100%;
                 height: 50px;
             }
-            .addUser{
+            .createTask{
                 margin: auto;
                 display: block;
                 width: 120px;
@@ -280,10 +280,33 @@
                 border-radius: 10px;
                 color: white;
             }
-            .addUser:hover{
+            .createTask:hover{
                 background-color: rgb(255, 255, 255);
                 color: black;
                 cursor: pointer;
+            }
+
+            .filter-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .filter-link {
+                margin: 0 15px;
+                text-decoration: underline;
+                font-family: Verdana, sans-serif;
+                font-size: 16px;
+                color: #5b3a9b;
+                cursor: pointer;
+            }
+
+            .filter-link:hover {
+                color: rgb(46, 19, 83);
+            }
+
+            .filter-link.active {
+                font-style: italic;
+                font-weight: bold;
             }
 
             .main-table {
@@ -342,23 +365,21 @@
                 <button type = "button" class = "drop-btn" onClick = "menuFunction()"><i class="fa fa-bars"></i></button>
                 <div class = "menu" id = "menuDropdown">
                     <div class = "img"></div>
-                    <h3 class = "admin-name">{{ $user->name }}</h3>
+                    <h3 class = "employee-name">{{ $user->name }}</h3>
                     <br><br>
-                    <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
+                    <a class = "menu-list" href = "{{ route('employee.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Create Task</a>
-                    <a class = "current-page" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
-                    <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
-                    <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
+                    <a class = "current-page" href = "{{ route('employee.task.index') }}"><i class="fa fa-rectangle-list"></i>
+                    <span style="margin-left: 10px; font-style: italic;">My Tasks</a>
+                    <a class = "menu-list" href = "{{ route('employee.profile.index') }}"><i class="fa fa-circle-user"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Profile</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
                     <a class="menu-list" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-arrow-right-to-bracket"></i>
                         <span style="margin-left: 10px; font-style: italic;">Log Out</span>
-                    </a>                
+                    </a>            
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
@@ -366,36 +387,29 @@
         </div>
         <div class = "page">
             <!-- <section> -->
-                <h2>MANAGE USERS</h2>
-                <div class = "btn-container">
-                    <button type="button" class="addUser" onclick="window.location.href='{{ route('admin.user.create') }}'">Add User</button>
-                </div>
+                <h2>MY TASKS</h2>
                 
                 <table class="main-table">
                     <tr>
                         <th>#</th>
-                        <th>Full Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
                         <th>Action</th>
+
                     </tr>
                     
-                    @foreach($users as $key => $user)
                     <tr>
-                        <td>{{ $key + 1 }}</td>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->role }}</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
+                        <td>#</td>
                         <td>
                             <a href="#" class="edit-btn">Edit</a>
-                            <a href="#" class="delete-btn" onclick="event.preventDefault(); document.getElementById('delete-form-{{ $user->id }}').submit();">Delete</a>
-                            <form id="delete-form-{{ $user->id }}" action="#" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
                         </td>
                     </tr>
-                    @endforeach
                     
                 </table>
             <!-- </section> -->
@@ -423,5 +437,35 @@
                 }
             }
         }
+
+        function filterTasks(filterType) {
+            // Remove 'active' class from all links
+            document.querySelectorAll('.filter-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Apply the 'active' class to the clicked link
+            const clickedLink = event.target;
+            clickedLink.classList.add('active');
+
+            // Perform the task filtering logic based on the filterType
+            if (filterType === 'today') {
+                // Logic to filter tasks due today
+            } else if (filterType === 'overdue') {
+                // Logic to filter overdue tasks
+            } else if (filterType === 'no_deadline') {
+                // Logic to filter tasks with no deadline
+            }
+        }
+
+        function resetFilters() {
+            // Remove 'active' class from all links
+            document.querySelectorAll('.filter-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Logic to reset all filters and show all tasks
+        }
+
     </script>
 </html>

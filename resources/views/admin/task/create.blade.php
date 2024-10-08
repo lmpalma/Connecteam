@@ -120,6 +120,7 @@
                 border: solid lightgray 2px;
                 text-align: center;
                 display: inline-block;
+                color: black;
             }
             .container{
                 width: 25vw;

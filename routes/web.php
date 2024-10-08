@@ -9,9 +9,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ForgotPasswordController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 // AUTHENTICATION ROUTES
 Route::get('/',[HomeController::class,'index'])->name('frontend.home');
@@ -45,6 +42,13 @@ Route::middleware(['isAdmin'])->group(function () {
 });
 
 // EMPLOYEE ROUTES
+
 Route::middleware(['isEmployee'])->group(function () {
     Route::get('/employee/dashboard', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
+
+    // task routes
+    Route::get('/employee/task/index', [EmployeeController::class, 'myTasks'])->name('employee.task.index');
+
+    // profile routes
+    Route::get('/employee/profile', [EmployeeController::class, 'viewProfile'])->name('employee.profile.index');
 });
