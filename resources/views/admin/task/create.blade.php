@@ -148,7 +148,8 @@
             }
 
             input[type="text"], textarea, input[type="date"], select {
-                width: 100%;
+                min-width: 96%;
+                max-width: 96%;
                 padding: 10px;
                 margin-bottom: 15px;
                 border-radius: 10px;

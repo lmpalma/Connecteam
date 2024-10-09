@@ -56,6 +56,9 @@
             flex-direction: column;
             align-items: center;
         }
+        form{
+            width: 100%;
+        }
         .container-name {
             font-size: 18px;
             font-family: Verdana;
@@ -67,15 +70,16 @@
             font-size: 14px;
             font-family: Verdana;
             color: rgb(0, 0, 0);
-            align-self: flex-start; 
+            
             margin-bottom: 5px;
         } 
         input {
-            width: 100%; 
-            height: 40px;
+            width: 98%;
+            margin-left: auto;
+            margin-right:auto;
+            height: 40px; 
             font-size: 16px;
             margin: 10px 0; 
-            padding: 0 10px;
             background: rgba(155, 62, 164, 0.5);
             border: 2px solid rgb(100, 0, 153);
             border-radius: 10px;
