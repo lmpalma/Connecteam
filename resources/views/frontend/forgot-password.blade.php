@@ -64,7 +64,7 @@
             margin-bottom: 5px;
         }
         input {
-            width: 100%;
+            width: 94%;
             height: 40px; 
             font-size: 16px;
             margin: 10px 0; 
