@@ -16,6 +16,7 @@
                 background-size: cover;
                 margin: 0;
                 font-family: Verdana, sans-serif;
+                width: 100%;
             }
             .page{
                 width: 100%;
@@ -48,6 +49,14 @@
                 font-family: Verdana;
                 color: white;
             }
+            .notif-bell{
+                margin-inline-start: 72%;
+                padding: 10px;
+                width: 40px;
+                height: 40px;
+
+            }
+            /* Left Menu (Profile) */
             .drop-btn{
                 color: white;
                 font-size: 38px;
@@ -61,11 +70,24 @@
                 display: none;
                 position: absolute;
                 background-color: #f9f9f9;
-                min-width: 12vw;
+                min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
                 margin-top: 20px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
+            }
+            .menu-list{
+                width: 100%;
+                text-decoration: none;
+                font-size: 16px;
+                font-family: Verdana;
+                list-style-type: none;
+                padding-top: 18px;
+                padding-bottom: 18px;
+                border: solid lightgray 2px;
+                text-align: center;
+                display: inline-block;
+                color: black;
             }
             .dropdown-menu{
                 position: relative;
@@ -76,6 +98,28 @@
                 cursor: pointer;
             }
             .show {display: block;}
+            a{
+                text-decoration: none;
+            }
+            a:hover{
+                background: rgba(46, 19, 83, 0.3);
+                color: rgb(41, 6, 75);
+            }
+            .current-page{
+                background: rgba(46, 19, 83, 0.5);
+                text-decoration: none;
+                width: 100%;
+                font-size: 16px;
+                font-family: Verdana;
+                font-weight: bold;
+                list-style-type: none;
+                padding-top: 18px;
+                padding-bottom: 18px;
+                border: solid lightgray 2px;
+                text-align: center;
+                display: inline-block;
+                color: rgb(41, 6, 75);
+            }
 
             .img{
                 height: 120px;
@@ -95,6 +139,7 @@
                 text-align: center;
             }
 
+            /* Page contents */
             section {
                 width: 40vw;
                 align-items: center;
@@ -105,23 +150,10 @@
                 padding: 30px;
                 background-color: white;
                 border-radius: 20px;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-                
+                box-shadow: black 0 0 4px;
             }
 
-            .menu-list{
-                width: 15vw;
-                text-decoration: none;
-                font-size: 16px;
-                font-family: Verdana;
-                list-style-type: none;
-                padding-top: 18px;
-                padding-bottom: 18px;
-                border: solid lightgray 2px;
-                text-align: center;
-                display: inline-block;
-                color: black;
-            }
+            
             .container{
                 width: 25vw;
                 height: 50vh;
@@ -132,6 +164,7 @@
                 border-radius: 20px;
                 margin-top: 30px;
                 margin-bottom: 30px;
+                box-shadow: black 2px 2px 4px;
             }
             .container-name{
                 font-size: 18px;
@@ -256,35 +289,14 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                width: 100%;
             }
             h4{
                 font-size: 12px;
                 text-align: center;
                 padding: 30px;
             }
-            a{
-                text-decoration: none;
-            }
-            a:hover{
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
-            }
-            .current-page{
-                background: rgba(46, 19, 83, 0.5);
-                text-decoration: none;
-                width: 15vw;
-                font-size: 16px;
-                font-family: Verdana;
-                font-weight: bold;
-                list-style-type: none;
-                padding-top: 18px;
-                padding-bottom: 18px;
-                border: solid lightgray 2px;
-                text-align: center;
-                display: inline-block;
-                color: rgb(41, 6, 75);
-            }
-
+            
             @media (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
@@ -306,6 +318,8 @@
                     <br><br>
                     <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
+                    <a class = "menu-list" ><i class="fa fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</span></a>
                     <a class = "current-page" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
@@ -325,11 +339,12 @@
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
+            <!-- <img src="{{ asset('assets/images/bell.png') }}" class="notif-bell"> -->
         </div>
         <div class = "page">
         <section>
             <h2>CREATE TASK</h2>
-            <form action="{{ route('admin.task.store') }}" method="POST">
+            <form action="{{ route('admin.task.store') }}" method="POST" class = "task-form">
                 @csrf
                 <label>Title</label><br>
                 <input type="text" name="title" required>
