@@ -401,6 +401,8 @@
                     <span style="margin-left: 10px; font-style: italic;">My Tasks</a>
                     <a class = "menu-list" href = "{{ route('employee.profile.index') }}"><i class="fa fa-circle-user"></i>
                     <span style="margin-left: 10px; font-style: italic;">Profile</a>
+                    <a class = "menu-list" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
@@ -430,6 +432,7 @@
                         <th>Description</th>
                         <th>Due Date</th>
                         <th>Status</th>
+                        <th>Files</th>
                         <th>Action</th>
 
                     </tr>
@@ -442,7 +445,19 @@
                             <td>{{ $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : 'N/A' }}</td>
                             <td>{{ $task->status }}</td>
                             <td>
-                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn">Edit</a>
+                                @if($task->taskFiles->isNotEmpty())
+                                    @foreach($task->taskFiles as $file)
+                                        <div>
+                                            <span>{{ $file->file_name }}</span>
+                                            <a href="{{ route('employee.task.files.download', $file->id) }}" class="btn btn-primary">Download</a>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <span>No files uploaded.</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn">Upload</a>
                             </td>
                         </tr>
                     @endforeach

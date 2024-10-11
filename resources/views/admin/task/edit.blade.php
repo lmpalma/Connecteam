@@ -311,6 +311,8 @@
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
                     <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
+                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
@@ -350,6 +352,15 @@
                         {{ $employee->name }}
                     </option>
                 @endforeach
+            </select>
+            <br><br>
+
+            <label>Status:</label><br>
+            <select name="status" required>
+                <option value="">Select Progress</option>
+                    <option value="Pending" {{ $task->status === 'Pending' ? 'selected' : '' }}>Pending</option>
+                    <option value="In Progress" {{ $task->status === 'In Progress' ? 'selected' : '' }}>In Progress</option>
+                    <option value="Completed" {{ $task->status === 'Completed' ? 'selected' : '' }}>Completed</option>
             </select>
             <br>
             

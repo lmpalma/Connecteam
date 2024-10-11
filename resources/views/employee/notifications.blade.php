@@ -6,7 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <title>Connecteam - Dashboard</title>
+
+        <title>Connecteam - My Tasks</title>
         <style>
             body{
                 min-height: 100vh;
@@ -46,6 +47,12 @@
                 font-size: 20px;
                 font-family: Verdana;
                 color: white;
+            }
+            .page-area{
+                padding: 10px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                
             }
             .drop-btn{
                 color: white;
@@ -106,42 +113,6 @@
                 display: inline-block;
                 color: black;
             }
-
-            .dashboard {
-                flex: 1;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding: 20px;
-            }
-
-            .box {
-                width: 35%;
-                height: 20vh;
-                margin: 10px 10px;
-                border-radius: 15px;
-                background-color: #e3e8e8;
-                border: solid #5b3a9b 2px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                position: relative;
-            }
-
-            .box i {
-                font-size: 26px;
-                color: #5b3a9b;
-                margin-bottom: 15px;
-            }
-
-            .box p {
-                margin: 0;
-                font-size: 18px;
-                color: #5b3a9b;
-            }
-
             .container{
                 width: 25vw;
                 height: 50vh;
@@ -158,34 +129,75 @@
                 font-family: Verdana;
                 text-align: center;
             }
-            
+            label{
+                font-size: 12px;
+                font-family: Verdana;
+            }
+            .input-box{
+                width: 28vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+            }
+            .input-box2{
+                min-width: 28vw;
+                max-width: 28vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 10vh;
+                font-size: 14px;
+            }
+            select{
+                width: 18vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+            }
             p{
                 font-size: 12px;
                 font-family: Verdana;
                 text-align: center;
             }
-            a{
+            .nav{
                 font-style: italic;
                 color: black;
             }
-            
-            .footer-bar {
-                height: 10vh;
-                background-color: #5b3a9b;
-                color: #fff;
-                text-align: center;
-                padding: 30px;
-                margin-top: auto;
-                display: flex;
-                justify-content: center;
+            /* section{
+                padding: 20px;
+                display: inline-block;
                 align-items: center;
+                width: 70vw;
+            } */
+            .dashboard-row{
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
             }
-            h4 {
-                font-size: 12px;
-                margin: 0;
+            .box{
+                width: 20%;
+                min-height: 280px;
+                border-radius: 10px;
+                margin: auto;
+                background-color: rgb(183, 121, 255);
+                opacity: 90%;
+                display: flex;
+                flex-wrap: wrap;
+                border: solid black 2px;
+                margin-bottom: 30px;
+            }
+            h2{
+                font-size: 24px;
+                font-family: Verdana;
+                text-align: center;
+                margin-top: 50px;
+                color: #5b3a9b;
+
             }
             
-            .footer-bar {
+            .footer-bar{
                 height: 10vh;
                 background-color: #5b3a9b;
                 color: white;
@@ -196,11 +208,12 @@
                 justify-content: center;
                 align-items: center;
             }
-            h4 {
+            h4{
                 font-size: 12px;
-                margin: 0;
+                text-align: center;
+                padding: 20px;
+                color:white;
             }
-            
             a{
                 text-decoration: none;
             }
@@ -223,7 +236,146 @@
                 display: inline-block;
                 color: rgb(41, 6, 75);
             }
+            .userdp{
+                width: 70px;
+                height: 70px;
+                margin: 20px;
+                border-radius: 20px;
+                border: solid black 1px;
+            }
+            h3{
+                font-family: Verdana;
+                font-size: 16px;
+                margin-top: 40px;
+            }
+            p{
+                margin: 20px;
+            }
+            .view-btn{
+                margin-top: 25px;
+                margin-inline-start: 25%;
+                width: 50%;
+                height: 30px;
+                font-size: 15px;
+                background-color: rgb(46, 19, 83);
+                border-radius: 10px;
+                color: white;
+            }
+            .view-btn:hover{
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                cursor: pointer;
+            }
+            .btn-container{
+                width: 100%;
+                height: 50px;
+            }
+            .createTask{
+                margin: auto;
+                display: block;
+                width: 120px;
+                height: 30px;
+                font-size: 15px;
+                background: rgba(46, 19, 83, 0.8);
+                border-radius: 10px;
+                color: white;
+            }
+            .createTask:hover{
+                background-color: rgb(255, 255, 255);
+                color: black;
+                cursor: pointer;
+            }
 
+            .filter-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .filter-link {
+                margin: 0 15px;
+                text-decoration: underline;
+                font-family: Verdana, sans-serif;
+                font-size: 16px;
+                color: #5b3a9b;
+                cursor: pointer;
+            }
+
+            .filter-link:hover {
+                color: rgb(46, 19, 83);
+            }
+
+            .filter-link.active {
+                font-style: italic;
+                font-weight: bold;
+            }
+
+            .main-table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: lightgray;
+            border-radius: 10px;
+            overflow: hidden;
+            }
+            .main-table th, .main-table td {
+                border: 1px solid #ddd;
+                padding: 12px;
+                text-align: center;
+            }
+            .main-table th {
+                background-color: #5b3a9b;
+                color: white;
+            }
+            .edit-btn, .delete-btn {
+                text-decoration: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                color: white;
+                transition: background-color 0.3s;
+            }
+            .edit-btn {
+                background-color: rgb(46, 19, 83);
+            }
+            .edit-btn:hover {
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+            }
+            .delete-btn {
+                background-color: red;
+            }
+            .delete-btn:hover {
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+            }
+
+            .alert-success {
+                padding: 10px;
+                margin: 10px 0; 
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .alert-error {
+                padding: 10px;
+                margin: 10px 0;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+            
             @media (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
@@ -232,6 +384,7 @@
                     width: 80vw;
                 }
             }
+
         </style>
     </head>
     <body>
@@ -242,13 +395,13 @@
                     <div class = "img"></div>
                     <h3 class = "employee-name">{{ $user->name }}</h3>
                     <br><br>
-                    <a class = "current-page" href = "{{ route('employee.dashboard') }}"><i class="fa fa-layer-group"></i>
+                    <a class = "menu-list" href = "{{ route('employee.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
                     <a class = "menu-list" href = "{{ route('employee.task.index') }}"><i class="fa fa-rectangle-list"></i>
                     <span style="margin-left: 10px; font-style: italic;">My Tasks</a>
                     <a class = "menu-list" href = "{{ route('employee.profile.index') }}"><i class="fa fa-circle-user"></i>
                     <span style="margin-left: 10px; font-style: italic;">Profile</a>
-                    <a class = "menu-list" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <a class = "current-page" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
                     <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -263,32 +416,26 @@
             <h1 class = "web-title">Connecteam</h1>
         </div>
         <div class = "page">
-            <section class="dashboard">
-                <div class="box">
-                    <i class="fa fa-tasks"></i>
-                    <p>{{ $taskCount }} Overall Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-triangle-exclamation"></i>
-                    <p>{{ $overdueTaskCount }} Overdue Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-business-time"></i>
-                    <p>{{ $noDeadlineTaskCount }} Tasks with No Deadline</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-clock"></i>
-                    <p>{{ $pendingTaskCount }} Pending Tasks</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-spinner"></i>
-                    <p>{{ $inProgressTaskCount }} Tasks In Progress</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-check"></i>
-                    <p>{{ $completedTaskCount }} Completed Tasks</p>
-                </div>
-            </section>
+            <!-- <section> -->
+                <h2>NOTIFICATIONS</h2>
+
+                @if (session('success'))
+                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                
+                <table class="main-table">
+                    <tr>
+                        <th>#</th>
+                        <th>Message</th>
+                        <th>Type</th>
+                        <th>Date</th>
+
+                    </tr>
+                    
+                </table>
+            <!-- </section> -->
         </div>
     </body>
     <footer>
@@ -313,5 +460,6 @@
                 }
             }
         }
+
     </script>
 </html>

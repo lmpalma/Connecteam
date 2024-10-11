@@ -16,6 +16,8 @@ Route::get('/signup',[AuthController::class,'signupPage'])->name('frontend.signu
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/verify-email/{code}', [AuthController::class, 'verifyEmail'])->name('verify.email');
+
 
 // FORGOT PASS ROUTES
 Route::get('/forgot-password',[ForgotPasswordController::class,'forgotPassword'])->name('frontend.forgot-password');
@@ -27,6 +29,7 @@ Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 
     // task routes
     Route::get('/admin/task/create',[AdminController::class,'create'])->name('admin.task.create');
@@ -35,6 +38,7 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::get('admin/task/{id}/edit', [AdminController::class, 'editTask'])->name('admin.task.edit');
     Route::put('admin/task/{id}', [AdminController::class, 'updateTask'])->name('admin.task.update');
     Route::delete('/admin/task/{id}', [AdminController::class, 'deleteTask'])->name('admin.task.delete');
+    Route::get('/admin/task-files/download/{id}', [AdminController::class, 'downloadTaskFile'])->name('admin.task.files.download');
 
     // user crud routes
     Route::get('/admin/user/index',[AdminController::class,'viewUsers'])->name('admin.user.index');
@@ -50,11 +54,13 @@ Route::middleware(['isAdmin'])->group(function () {
 
 Route::middleware(['isEmployee'])->group(function () {
     Route::get('/employee/dashboard', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
+    Route::get('/employee/notifications', [EmployeeController::class, 'notifications'])->name('employee.notifications');
 
     // task routes
     Route::get('/employee/task/index', [EmployeeController::class, 'myTasks'])->name('employee.task.index');
     Route::get('/employee/task/{id}/edit', [EmployeeController::class, 'editTask'])->name('employee.task.edit');
     Route::put('/employee/task/{id}', [EmployeeController::class, 'updateTask'])->name('employee.task.update');
+    Route::get('/employee/task-files/download/{id}', [EmployeeController::class, 'downloadTaskFile'])->name('employee.task.files.download');
 
     // profile routes
     Route::get('/employee/profile', [EmployeeController::class, 'viewProfile'])->name('employee.profile.index');

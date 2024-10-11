@@ -243,6 +243,8 @@
                         <i class="fa fa-circle-user"></i>
                         <span style="margin-left: 10px; font-style: italic;">Profile</span>
                     </a>
+                    <a class = "menu-list" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>

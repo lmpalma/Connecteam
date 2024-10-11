@@ -401,9 +401,9 @@
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
-                    <a class = "current-page" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
+                    <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
-                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <a class = "current-page" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
                     <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -419,18 +419,8 @@
         </div>
         <div class = "page">
             <!-- <section> -->
-                <h2>ALL TASKS</h2>
-                <div class = "btn-container">
-                    <button type="button" class="createTask" onclick="window.location.href='{{ route('admin.task.create') }}'">Create Task</button>
-                </div>
-
-                <div class="filter-container">
-                    <a href="{{ route('admin.task.index', ['filter' => 'due_today']) }}" class="filter-link" onclick="filterTasks('today')">Due Today</a>
-                    <a href="{{ route('admin.task.index', ['filter' => 'overdue']) }}" class="filter-link" onclick="filterTasks('overdue')">Overdue</a>
-                    <a href="{{ route('admin.task.index', ['filter' => 'no_deadline']) }}" class="filter-link" onclick="filterTasks('no_deadline')">No Deadline</a>
-                    <a href="{{ route('admin.task.index') }}" class="filter-link" onclick="resetFilters()">Reset</a>
-                </div>
-
+                <h2>NOTIFICATIONS</h2>
+                
                 @if (session('success'))
                     <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
                         {{ session('success') }}
@@ -440,47 +430,10 @@
                 <table class="main-table">
                 <tr>
                     <th>#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Assigned To</th>
-                    <th>Due Date</th>
-                    <th>Status</th>
-                    <th>Files</th>
-                    <th>Action</th>
+                    <th>Message</th>
+                    <th>Type</th>
+                    <th>Date</th>
                 </tr>
-                @foreach($tasks as $index => $task)
-                    <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $task->title }}</td>
-                        <td>{{ $task->description }}</td>
-                        <td>{{ $task->assignedUser ? $task->assignedUser->name : 'Unassigned' }}</td>
-                        <td>
-                            {{ $task->due_date ? $task->due_date->format('Y-m-d') : 'N/A' }}
-                        </td>
-                        <td>{{ $task->status }}</td>
-                        <td>
-                            @if($task->taskFiles->isNotEmpty())
-                                @foreach($task->taskFiles as $file)
-                                    <div>
-                                        <span>{{ $file->file_name }}</span>
-                                        <a href="{{ route('admin.task.files.download', $file->id) }}" class="btn btn-primary">Download</a>
-                                    </div>
-                                @endforeach
-                            @else
-                                <span>No files uploaded.</span>
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn">Edit</a>
-                            <a href="{{ route('admin.task.delete', $task->id) }}" class="delete-btn" 
-                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-form-{{ $task->id }}').submit(); }">Delete</a>
-                            <form id="delete-form-{{ $task->id }}" action="{{ route('admin.task.delete', $task->id) }}" method="POST" style="display: none;">
-                                @csrf
-                                @method('DELETE')
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
                     
                 </table>
             <!-- </section> -->

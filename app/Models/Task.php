@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\TaskFile;
 
 class Task extends Model
 {
@@ -31,5 +32,10 @@ class Task extends Model
     public function admin()
     {
         return $this->belongsTo(User::class, 'admin_id');
+    }
+
+    public function taskFiles()
+    {
+        return $this->hasMany(TaskFile::class, 'task_id');
     }
 }

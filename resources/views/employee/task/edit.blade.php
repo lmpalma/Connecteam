@@ -275,14 +275,16 @@
                         <i class="fa fa-layer-group"></i>
                         <span style="margin-left: 10px; font-style: italic;">Dashboard</span>
                     </a>
-                    <a class="menu-list" href="{{ route('employee.task.index') }}">
+                    <a class="current-page" href="{{ route('employee.task.index') }}">
                         <i class="fa fa-rectangle-list"></i>
                         <span style="margin-left: 10px; font-style: italic;">My Tasks</span>
                     </a>
-                    <a class="current-page" href="{{ route('employee.profile.index') }}">
+                    <a class="menu-list" href="{{ route('employee.profile.index') }}">
                         <i class="fa fa-circle-user"></i>
                         <span style="margin-left: 10px; font-style: italic;">Profile</span>
                     </a>
+                    <a class = "menu-list" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
@@ -311,16 +313,12 @@
                     <strong>Due Date:</strong> {{ $task->due_date ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : 'N/A' }}
                 </div>
                 <div class="info">
-                    <strong>Status:</strong>
-                    <form action="{{ route('employee.task.update', $task->id) }}" method="POST" style="display: inline;">
+                    <strong>Upload Task Files:</strong>
+                    <form action="{{ route('employee.task.update', $task->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <select name="status" style="margin-left: 10px;">
-                            <option value="Pending" {{ $task->status === 'Pending' ? 'selected' : '' }}>Pending</option>
-                            <option value="In Progress" {{ $task->status === 'In Progress' ? 'selected' : '' }}>In Progress</option>
-                            <option value="Completed" {{ $task->status === 'Completed' ? 'selected' : '' }}>Completed</option>
-                        </select>
-                        <button type="submit" class="edit-btn">Update Status</button>
+                        <input type="file" name="task_files[]" multiple required>
+                        <button type="submit" class="edit-btn">Upload Files</button>
                     </form>
                 </div>
             </div>

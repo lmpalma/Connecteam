@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 // use App\Models\employee;
 use App\Models\User;
 use App\Models\Task;
+use Illuminate\Support\Facades\Storage;
+use App\Models\TaskFile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -74,20 +76,45 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function updateTask(Request $request, $id) 
+    // public function updateTask(Request $request, Task $task)
+    // {
+    //     if ($request->hasFile('task_files')) {
+    //         foreach ($request->file('task_files') as $file) {
+    //             $filePath = $file->store('task_files', 'public');
+    //             TaskFile::create([
+    //                 'task_id' => $task->id,
+    //                 'file_path' => $filePath,
+    //                 'file_name' => $file->getClientOriginalName(),
+    //             ]);
+    //         }
+    //     }
+
+    //     return redirect()->back()->with('success', 'Task updated and files uploaded.');
+    // }
+
+    public function updateTask(Request $request, $id)
     {
-        $user = Auth::user();
+        $task = Task::findOrFail($id);
 
         $request->validate([
-            'status' => 'required|in:Pending,In Progress,Completed',
+            'task_files.*' => 'required|file',
         ]);
 
-        $task = Task::where('id', $id)->where('assigned_to', $user->id)->firstOrFail();
+        if ($request->hasFile('task_files')) {
+            foreach ($request->file('task_files') as $file) {
+                $filePath = $file->store('task_files', 'public');
 
-        $task->status = $request->status;
-        $task->save();
+                TaskFile::create([
+                    'task_id' => $task->id, 
+                    'file_path' => $filePath,
+                    'file_name' => $file->getClientOriginalName(),
+                ]);
+            }
 
-        return redirect()->route('employee.task.index')->with('success', 'Task updated successfully.');
+            return redirect()->route('employee.task.index')->with('success', 'Task files uploaded successfully.');
+        }
+
+        return redirect()->back()->with('error', 'No task files were uploaded.');
     }
 
     public function viewProfile() 
@@ -96,6 +123,21 @@ class EmployeeController extends Controller
         $user = Auth::user();
 
         return view('employee.profile.index', ['user' => $user]);
+    }
+
+    public function downloadTaskFile($id)
+    {
+        $taskFile = TaskFile::findOrFail($id);
+
+        return Storage::disk('public')->download($taskFile->file_path, $taskFile->file_name);
+    }
+
+    public function notifications() 
+    {
+
+        $user = Auth::user();
+
+        return view('employee.notifications', ['user' => $user]);
     }
 
 //     public function dashboard()

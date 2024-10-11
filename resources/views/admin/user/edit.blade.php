@@ -334,6 +334,8 @@
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
                     <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
+                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>

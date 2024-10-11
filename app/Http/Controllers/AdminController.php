@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Task;
+use App\Models\TaskFile;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -147,6 +149,7 @@ class AdminController extends Controller
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
             'assigned_to' => 'required|exists:users,id',
+            'status' => 'required|in:Pending,In Progress,Completed',
         ]);
 
         $task->update([
@@ -154,6 +157,7 @@ class AdminController extends Controller
             'description' => $request->input('description'),
             'due_date' => $request->input('due_date'),
             'assigned_to' => $request->input('assigned_to'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->route('admin.task.index')->with('success', 'Task updated successfully.');
@@ -262,6 +266,21 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
+    }
+
+    public function downloadTaskFile($id)
+    {
+        $taskFile = TaskFile::findOrFail($id);
+
+        return Storage::disk('public')->download($taskFile->file_path, $taskFile->file_name);
+    }
+
+    public function notifications() 
+    {
+
+        $user = Auth::user();
+
+        return view('admin.notifications', ['user' => $user]);
     }
 
     // public function register(Request $request){
