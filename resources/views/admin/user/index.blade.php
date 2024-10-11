@@ -378,16 +378,14 @@
                     <br><br>
                     <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" ><i class="fa fa-bell"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Notifications</span></a>
+                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "current-page" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
                     <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
-                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>
