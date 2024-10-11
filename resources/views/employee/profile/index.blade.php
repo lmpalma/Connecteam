@@ -55,7 +55,8 @@
                 margin-top: 10px;
                 margin-bottom: 10px;
             }
-            .drop-btn {
+            /* Left Menu (Profile) */
+            .drop-btn{
                 color: white;
                 font-size: 38px;
                 border: none;
@@ -64,47 +65,18 @@
                 font-stretch: wider;
                 padding: 12px;
             }
-            .menu {
+            .menu{
                 display: none;
                 position: absolute;
                 background-color: #f9f9f9;
-                min-width: 12vw;
+                min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
                 margin-top: 20px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
-
-            .dropdown-menu {
-                position: relative;
-                display: inline-block;
-                margin-left: 24px;
-            }
-            .drop-btn:hover {
-                cursor: pointer;
-            }
-            .show {
-                display: block;
-            }
-            .img {
-                height: 120px;
-                width: 120px;
-                border-radius: 10px;
-                background-color: black;
-                border: 2px black;
-                margin: auto;
-                margin-top: 50px;
-            }
-            .employee-name {
-                font-size: 16px;
-                font-family: Verdana;
-                font-weight: bold;
-                margin: 10px;
-                color: black;
-                text-align: center;
-            }
-            .menu-list {
-                width: 15vw;
+            .menu-list{
+                width: 100%;
                 text-decoration: none;
                 font-size: 16px;
                 font-family: Verdana;
@@ -116,6 +88,57 @@
                 display: inline-block;
                 color: black;
             }
+            .dropdown-menu{
+                position: relative;
+                display: inline-block;
+                margin-left: 24px;
+            }
+            .drop-btn:hover{
+                cursor: pointer;
+            }
+            .show {display: block;}
+            a{
+                text-decoration: none;
+            }
+            a:hover{
+                background: rgba(46, 19, 83, 0.3);
+                color: rgb(41, 6, 75);
+            }
+            .current-page{
+                background: rgba(46, 19, 83, 0.5);
+                text-decoration: none;
+                width: 100%;
+                font-size: 16px;
+                font-family: Verdana;
+                font-weight: bold;
+                list-style-type: none;
+                padding-top: 18px;
+                padding-bottom: 18px;
+                border: solid lightgray 2px;
+                text-align: center;
+                display: inline-block;
+                color: rgb(41, 6, 75);
+            }
+
+            .img{
+                height: 120px;
+                width: 120px;
+                border-radius: 10px;
+                background-color: black;
+                border: 2px black;
+                margin: auto;
+                margin-top: 50px;
+            }
+            
+            .employee-name {
+                font-size: 16px;
+                font-family: Verdana;
+                font-weight: bold;
+                margin: 10px;
+                color: black;
+                text-align: center;
+            }
+            
             .container {
                 width: 90%;
                 max-width: 400px;
@@ -176,28 +199,7 @@
                 padding: 20px;
                 color: white;
             }
-            a {
-                text-decoration: none;
-            }
-            a:hover {
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
-            }
-            .current-page {
-                background: rgba(46, 19, 83, 0.5);
-                text-decoration: none;
-                width: 15vw;
-                font-size: 16px;
-                font-family: Verdana;
-                font-weight: bold;
-                list-style-type: none;
-                padding-top: 18px;
-                padding-bottom: 18px;
-                border: solid lightgray 2px;
-                text-align: center;
-                display: inline-block;
-                color: rgb(41, 6, 75);
-            }
+            
             .userdp {
                 width: 70px;
                 height: 70px;

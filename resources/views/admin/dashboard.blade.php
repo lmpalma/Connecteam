@@ -47,6 +47,7 @@
                 font-family: Verdana;
                 color: white;
             }
+            /* Left Menu (Profile) */
             .drop-btn{
                 color: white;
                 font-size: 38px;
@@ -60,11 +61,24 @@
                 display: none;
                 position: absolute;
                 background-color: #f9f9f9;
-                min-width: 12vw;
+                min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
                 margin-top: 20px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
+            }
+            .menu-list{
+                width: 100%;
+                text-decoration: none;
+                font-size: 16px;
+                font-family: Verdana;
+                list-style-type: none;
+                padding-top: 18px;
+                padding-bottom: 18px;
+                border: solid lightgray 2px;
+                text-align: center;
+                display: inline-block;
+                color: black;
             }
             .dropdown-menu{
                 position: relative;
@@ -75,12 +89,34 @@
                 cursor: pointer;
             }
             .show {display: block;}
+            a{
+                text-decoration: none;
+            }
+            a:hover{
+                background: rgba(46, 19, 83, 0.3);
+                color: rgb(41, 6, 75);
+            }
+            .current-page{
+                background: rgba(46, 19, 83, 0.5);
+                text-decoration: none;
+                width: 100%;
+                font-size: 16px;
+                font-family: Verdana;
+                font-weight: bold;
+                list-style-type: none;
+                padding-top: 18px;
+                padding-bottom: 18px;
+                border: solid lightgray 2px;
+                text-align: center;
+                display: inline-block;
+                color: rgb(41, 6, 75);
+            }
 
             .img{
                 height: 120px;
                 width: 120px;
                 border-radius: 10px;
-                background-image: url('{{ asset('assets/images/default.jpg') }}');
+                background-color: black;
                 border: 2px black;
                 margin: auto;
                 margin-top: 50px;
@@ -93,19 +129,7 @@
                 color: black;
                 text-align: center;
             }
-            .menu-list{
-                width: 15vw;
-                text-decoration: none;
-                font-size: 16px;
-                font-family: Verdana;
-                list-style-type: none;
-                padding-top: 18px;
-                padding-bottom: 18px;
-                border: solid lightgray 2px;
-                text-align: center;
-                display: inline-block;
-                color: black;
-            }
+            
 
             .dashboard {
                 flex: 1;
@@ -201,28 +225,6 @@
                 margin: 0;
             }
             
-            a{
-                text-decoration: none;
-            }
-            a:hover{
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
-            }
-            .current-page{
-                background: rgba(46, 19, 83, 0.5);
-                text-decoration: none;
-                width: 15vw;
-                font-size: 16px;
-                font-family: Verdana;
-                font-weight: bold;
-                list-style-type: none;
-                padding-top: 18px;
-                padding-bottom: 18px;
-                border: solid lightgray 2px;
-                text-align: center;
-                display: inline-block;
-                color: rgb(41, 6, 75);
-            }
 
             @media (max-width: 768px) {
                 .left-nav {
@@ -244,6 +246,8 @@
                     <br><br>
                     <a class = "current-page" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
+                    <a class = "menu-list" ><i class="fa fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</span></a>
                     <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
