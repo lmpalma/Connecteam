@@ -80,7 +80,7 @@
                 height: 120px;
                 width: 120px;
                 border-radius: 10px;
-                background-color: black;
+                background-image: url('{{ asset('assets/images/default.jpg') }}');
                 border: 2px black;
                 margin: auto;
                 margin-top: 50px;
