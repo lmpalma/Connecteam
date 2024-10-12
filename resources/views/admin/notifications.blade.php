@@ -427,15 +427,37 @@
                     </div>
                 @endif
                 
-                <table class="main-table">
-                <tr>
-                    <th>#</th>
-                    <th>Message</th>
-                    <th>Type</th>
-                    <th>Date</th>
-                </tr>
-                    
-                </table>
+                @if(count($notifications) > 0)
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Message</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($notifications as $index => $notification)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{!! $notification->message !!}</td>
+                                    <td>{{ $notification->type }}</td>
+                                    <td>{{ $notification->created_at->format('Y-m-d H:i') }}</td>
+                                </tr>
+                            @endforeach
+
+                            @if($notifications->isEmpty())
+                                <tr>
+                                    <td colspan="4" class="text-center">No notifications found.</td>
+                                </tr>
+                            @endif
+                        </tbody>
+                    </table>
+
+                @else
+                    <p style="font-size: 14px;">No notifications available.</p>
+                @endif
             <!-- </section> -->
         </div>
     </body>

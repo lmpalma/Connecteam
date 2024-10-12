@@ -6,24 +6,22 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <title>Connecteam - Profile</title>
+
+        <title>Connecteam - Edit Profile</title>
         <style>
-            body {
+            body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg2.png') }}');
+                background-image: url('{{ asset('assets/images/bg1.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
                 font-family: Verdana, sans-serif;
             }
-            .page {
+            .page{
                 width: 100%;
                 min-height: 90vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
             }
-            .header {
+            .header{
                 width: 100%;
                 background-color: #5b3a9b;
                 align-items: center;
@@ -34,14 +32,14 @@
                 padding: 0 20px;
                 z-index: 1;
             }
-            .web-img {
+            .web-img{
                 margin-left: 20px;
                 padding: 10px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
             }
-            .web-title {
+            .web-title{
                 justify-content: space-around;
                 margin-top: auto;
                 margin-bottom: auto;
@@ -49,11 +47,6 @@
                 font-size: 20px;
                 font-family: Verdana;
                 color: white;
-            }
-            .page-area {
-                padding: 10px;
-                margin-top: 10px;
-                margin-bottom: 10px;
             }
             /* Left Menu (Profile) */
             .drop-btn{
@@ -129,8 +122,7 @@
                 margin: auto;
                 margin-top: 50px;
             }
-            
-            .employee-name {
+            .employee-name{
                 font-size: 16px;
                 font-family: Verdana;
                 font-weight: bold;
@@ -138,51 +130,140 @@
                 color: black;
                 text-align: center;
             }
-            
-            .container {
-                width: 90%;
-                max-width: 400px;
-                padding: 40px;
-                border: solid #5b3a9b 2px;
-                background-color: #e3e8e8;
+
+            section {
+                width: 40vw;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 50px;
+                margin-bottom: 50px;
+                padding: 30px;
+                background-color: white;
                 border-radius: 20px;
-                text-align: center;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                
+            }
+            
+            .container{
+                width: 25vw;
+                height: 50vh;
+                padding: 40px;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: lightgray;
+                border-radius: 20px;
+                margin-top: 30px;
+                margin-bottom: 30px;
             }
             .container-name{
                 font-size: 18px;
                 font-family: Verdana;
                 text-align: center;
             }
-            h2 {
-                font-size: 24px;
+            label {
+                font-size: 14px;
                 font-family: Verdana;
-                color: #5b3a9b;
-                margin-bottom: 20px;
-            }
-            .info {
-                font-size: 16px;
-                margin: 10px 0;
-            }
-            .censored {
-                color: gray;
-            }
-            .edit-btn {
-                margin: 25px auto 0; 
+                color: rgb(50, 50, 50);
                 display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+            }
+
+            input[type="text"], input[type="email"], input[type="password"] {
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 15px; 
+                border-radius: 10px;
+                border: solid 1px #cccccc;
+                background: rgba(252, 252, 252, 0.9);
+                font-family: Verdana;
+                font-size: 16px;
+                transition: border-color 0.3s ease;
+            }
+
+            /* .input-box{
+                min-width: 38vw;
+                max-width: 38vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            }
+            .input-box2{
+                min-width: 38vw;
+                max-width: 38vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 10vh;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            }
+            .input-box3{
+                width: 15vw;
+                margin: 2px;
+                margin-left: 10px;
+                height: 25px;
+                font-size: 14px;
+                background: rgba(252, 252, 252, 0.7);
+                border-radius: 10px;
+                border: solid black 2px;
+            } */
+            .update-button {
                 width: 50%;
-                height: 30px;
-                font-size: 15px;
-                background-color: rgb(46, 19, 83);
+                padding: 10px;
+                font-size: 16px;
+                background-color: #5b3a9b;
                 border-radius: 10px;
                 color: white;
                 border: none;
-            }
-            .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                font-family: Verdana;
                 cursor: pointer;
+                transition: background-color 0.3s ease;
             }
-            .footer-bar {
+
+            .update-button:hover {
+                background-color: #4a318a;
+            }
+            p{
+                font-size: 12px;
+                font-family: Verdana;
+                text-align: center;
+            }
+            a{
+                font-style: italic;
+                color: black;
+            }
+            
+            .dashboard{
+                width:100%;
+                display: flex;
+                margin-left: 50px;
+            }
+            .box{
+                width: 20vw;
+                height: 25vh;
+                border-radius: 10px;
+                margin: 40px;
+                background-color: darkseagreen;
+                opacity: 70%;
+                display: inline-block;
+                border: solid black 2px;
+            }
+            h2{
+                font-size: 25px;
+                font-family: Verdana;
+                text-align: center;
+                margin-left: 20px;
+                color: #5b3a9b;
+            }
+            
+            .footer-bar{
                 height: 10vh;
                 background-color: #5b3a9b;
                 color: white;
@@ -193,35 +274,32 @@
                 justify-content: center;
                 align-items: center;
             }
-            h4 {
+            h4{
                 font-size: 12px;
                 text-align: center;
-                padding: 20px;
-                color: white;
+                padding: 30px;
             }
             
-            .userdp {
-                width: 70px;
-                height: 70px;
-                margin: 20px;
-                border-radius: 20px;
-                border: solid black 1px;
-            }
-            h3 {
-                font-family: Verdana;
-                font-size: 16px;
-                margin-top: 40px;
-            }
-            p {
-                margin: 20px;
-            }
-
             .alert-success {
                 padding: 10px;
                 margin: 10px 0; 
                 background-color: #d4edda;
                 color: #155724;
                 border: 1px solid #c3e6cb;
+                border-radius: 5px;
+                width: 100%;
+                max-width: 350px;
+                text-align: center;
+                font-family: Tahoma;
+                font-size: 16px;
+            }
+
+            .alert-error {
+                padding: 10px;
+                margin: 10px 0;
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
                 border-radius: 5px;
                 width: 100%;
                 max-width: 350px;
@@ -238,15 +316,16 @@
                     width: 80vw;
                 }
             }
+
         </style>
     </head>
     <body>
-        <div class="header">
-            <div class="dropdown-menu">
-                <button type="button" class="drop-btn" onClick="menuFunction()"><i class="fa fa-bars"></i></button>
-                <div class="menu" id="menuDropdown">
-                    <div class="img"></div>
-                    <h3 class="employee-name">{{ $user->name }}</h3>
+        <div class = "header">
+            <div class = "dropdown-menu">
+                <button type = "button" class = "drop-btn" onClick = "menuFunction()"><i class="fa fa-bars"></i></button>
+                <div class = "menu" id = "menuDropdown">
+                    <div class = "img"></div>
+                    <h3 class = "employee-name">{{ $user->name }}</h3>
                     <br><br>
                     <a class="menu-list" href="{{ route('employee.dashboard') }}">
                         <i class="fa fa-layer-group"></i>
@@ -268,41 +347,59 @@
                     <a class="menu-list" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fa fa-arrow-right-to-bracket"></i>
                         <span style="margin-left: 10px; font-style: italic;">Log Out</span>
-                    </a>            
+                    </a>              
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
-            <h1 class="web-title">Connecteam</h1>
+            <h1 class = "web-title">Connecteam</h1>
         </div>
-        <div class="page">
+        <div class = "page">
 
-            <div class="container">
-                <h2>PROFILE</h2>
-                <div class="info">
-                    <strong>Full Name:</strong> {{ $user->name }}
-                </div>
-                <div class="info">
-                    <strong>Email:</strong> {{ $user->email }}
-                </div>
-                <div class="info">
-                    <strong>Password:</strong> <span class="censored">********</span>
-                </div>
-                <div class="info">
-                    <strong>Joined At:</strong> {{ $user->created_at->format('M d, Y') }}
-                </div>
-
-                @if (session('success'))
-                    <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <button class="edit-btn" onclick="location.href='{{ route('employee.profile.edit') }}'">Edit Profile</button>
+        @if ($errors->any())
+            <div class="alert-error" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
+        @endif
+
+        <section>
+        <h2>Edit Profile</h2>
+            <form action="{{ route('employee.profile.update') }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" name="name" id="name" class="input-box" value="{{ old('name', $user->name) }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" class="input-box" value="{{ old('email', $user->email) }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="input-box" placeholder="Leave blank to keep current password">
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirmation">Confirm Password:</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="input-box" placeholder="Leave blank to keep current password">
+                </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button type="submit" class="update-button">UPDATE PROFILE</button>
+                </div>
+            </form>
+        </section>
         </div>
     </body>
     <footer>
-        <div class="footer-bar">
+        <div class = "footer-bar">
             <h4>©️ 2024 - Connecteam | All rights reserved.</h4>
         </div>
     </footer>
@@ -310,10 +407,12 @@
         function menuFunction() {
             document.getElementById("menuDropdown").classList.toggle("show");
         }
+
         window.onclick = function(event) {
             if (!event.target.matches('.drop-btn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-menu");
-                for (var i = 0; i < dropdowns.length; i++) {
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
                     if (openDropdown.classList.contains('show')) {
                         openDropdown.classList.remove('show');

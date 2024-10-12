@@ -29,7 +29,7 @@ Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name
 
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
+    Route::get('/admin/notifications', [AdminController::class, 'viewNotifications'])->name('admin.notifications');
 
     // task routes
     Route::get('/admin/task/create',[AdminController::class,'create'])->name('admin.task.create');
@@ -54,7 +54,7 @@ Route::middleware(['isAdmin'])->group(function () {
 
 Route::middleware(['isEmployee'])->group(function () {
     Route::get('/employee/dashboard', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
-    Route::get('/employee/notifications', [EmployeeController::class, 'notifications'])->name('employee.notifications');
+    Route::get('/employee/notifications', [EmployeeController::class, 'viewNotifications'])->name('employee.notifications');
 
     // task routes
     Route::get('/employee/task/index', [EmployeeController::class, 'myTasks'])->name('employee.task.index');
@@ -64,4 +64,7 @@ Route::middleware(['isEmployee'])->group(function () {
 
     // profile routes
     Route::get('/employee/profile', [EmployeeController::class, 'viewProfile'])->name('employee.profile.index');
+    Route::get('/employee/profile/edit', [EmployeeController::class, 'editProfile'])->name('employee.profile.edit');
+    Route::put('/employee/profile/update', [EmployeeController::class, 'updateProfile'])->name('employee.profile.update');
+
 });

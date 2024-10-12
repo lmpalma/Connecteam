@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\TaskFile;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -87,13 +88,21 @@ class AdminController extends Controller
             'assigned_to' => 'required|exists:users,id',
         ]);
 
-        Task::create([
+        $task = Task::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
             'due_date' => $request->input('due_date'),
             'assigned_to' => $request->input('assigned_to'),
             'admin_id' => Auth::id(),
         ]);
+
+        $notification = new Notification([
+            'user_id' => $request->input('assigned_to'),
+            'type' => 'New Task Assigned',
+            'message' => "You have been assigned a new task: <strong>{$task->title}</strong>. Please take a moment to review it and start working on it.",
+        ]);
+    
+        $notification->save();
 
         return redirect()->route('admin.task.index')->with('success', 'Task created successfully.');
     }
@@ -152,6 +161,8 @@ class AdminController extends Controller
             'status' => 'required|in:Pending,In Progress,Completed',
         ]);
 
+        $oldStatus = $task->status;
+
         $task->update([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -159,6 +170,22 @@ class AdminController extends Controller
             'assigned_to' => $request->input('assigned_to'),
             'status' => $request->input('status'),
         ]);
+
+        if ($request->input('status') === 'In Progress' && $oldStatus !== 'In Progress') {
+            $notification = new Notification([
+                'user_id' => $task->assigned_to,
+                'type' => 'Task Status Updated',
+                'message' => "The status for <strong>{$task->title}</strong> has been updated to In Progress.",
+            ]);
+            $notification->save();
+        } elseif ($request->input('status') === 'Completed' && $oldStatus !== 'Completed') {
+            $notification = new Notification([
+                'user_id' => $task->assigned_to,
+                'type' => 'Task Marked Completed',
+                'message' => "The task <strong>{$task->title}</strong> has been marked completed.",
+            ]);
+            $notification->save();
+        }
 
         return redirect()->route('admin.task.index')->with('success', 'Task updated successfully.');
     }
@@ -236,7 +263,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
-            'password' => 'nullable|string|min:8', // Password is optional for update
+            'password' => 'nullable|string|min:8',
         ], [
             'email.unique' => 'The email address you provided is already in use. Please use a different email address.',
         ]);
@@ -268,6 +295,8 @@ class AdminController extends Controller
         return redirect()->route('admin.user.index')->with('success', 'User deleted successfully!');
     }
 
+    // OTHERS
+
     public function downloadTaskFile($id)
     {
         $taskFile = TaskFile::findOrFail($id);
@@ -275,12 +304,19 @@ class AdminController extends Controller
         return Storage::disk('public')->download($taskFile->file_path, $taskFile->file_name);
     }
 
-    public function notifications() 
+    public function viewNotifications() 
     {
 
         $user = Auth::user();
 
-        return view('admin.notifications', ['user' => $user]);
+        $notifications = Notification::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('admin.notifications', [
+            'user' => $user,
+            'notifications' => $notifications,
+        ]);
     }
 
     // public function register(Request $request){
