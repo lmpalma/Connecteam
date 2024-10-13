@@ -182,6 +182,10 @@
                 font-size: 16px;
                 transition: border-color 0.3s ease;
             }
+            input[type="text"]:focus, textarea:focus, input[type="email"]:focus, input[type="password"]:focus {
+                border-color: #5b3a9b;
+                outline: none;
+            }
 
             /* .input-box{
                 min-width: 38vw;
@@ -219,17 +223,19 @@
                 width: 50%;
                 padding: 10px;
                 font-size: 16px;
-                background-color: #5b3a9b;
+                color: #5b3a9b;
+                background-color: white;
                 border-radius: 10px;
-                color: white;
                 border: none;
                 font-family: Verdana;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
+                outline: 1px solid #5b3a9b;
             }
 
             .update-button:hover {
-                background-color: #4a318a;
+                color: white;
+                background-color: #5b3a9b;
             }
             p{
                 font-size: 12px;

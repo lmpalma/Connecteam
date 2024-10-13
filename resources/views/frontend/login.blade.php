@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Connecteam - LOGIN</title>
     <style>
         body {
@@ -51,7 +52,7 @@
             padding: 40px;
             background-color: white;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -70,30 +71,38 @@
             height: 40px; 
             font-size: 16px;
             margin: 10px 0; 
-            background: rgba(155, 62, 164, 0.5);
-            border: 2px solid rgb(100, 0, 153);
-            border-radius: 10px;
+            background: white;
+            border: solid 1px #cccccc;
+            border-radius: 5px;
             outline: none;
+            transition: border-color 0.3s ease;
         }
+        input:focus{
+                border-color: #5b3a9b;
+                outline: none;
+            }
+
         button {
             margin-top: 15px;
             width: 100%;
             height: 40px;
             font-size: 16px; 
             color: white;
-            background-color: rgb(100, 0, 153);
+            background-color: #5b3a9b;;
             border-radius: 10px;
             cursor: pointer;
             border: none;
             transition: background-color 0.3s;
+            outline: 1px solid #5b3a9b;;
         }
         button:hover {
-            background-color: rgb(0, 0, 0);
+            color: #5b3a9b;;
+            background-color: white;
         }
         p {
             font-size: 12px;
             font-family: Verdana;
-            color: rgb(0, 0, 0);
+            color: #5b3a9b;
             text-align: center;
             margin: 10px 0;
         }
@@ -201,14 +210,13 @@
                 
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>
-                
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
-                
+                <button type="submit" class="login-btn">LOGIN</button>                
                 <p>Forgot password? <a href="{{ route('frontend.forgot-password') }}">Click Here</a></p>
                 <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
                 
-                <button type="submit" class="login-btn">LOGIN</button>
+
             </form>
         </div>
     </div>

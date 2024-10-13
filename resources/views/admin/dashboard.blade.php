@@ -144,14 +144,14 @@
                 height: 20vh;
                 margin: 10px 10px;
                 border-radius: 15px;
-                background-color: #e3e8e8;
-                border: solid #5b3a9b 2px;
+                background-color: white;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
                 position: relative;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
             }
 
             .box i {

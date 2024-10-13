@@ -74,7 +74,6 @@
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
                 margin-top: 20px;
-                box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
             .menu-list{
                 width: 100%;
@@ -150,7 +149,7 @@
                 padding: 30px;
                 background-color: white;
                 border-radius: 20px;
-                box-shadow: black 0 0 4px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0 0 4px;
             }
 
             
@@ -164,7 +163,7 @@
                 border-radius: 20px;
                 margin-top: 30px;
                 margin-bottom: 30px;
-                box-shadow: black 2px 2px 4px;
+                box-shadow: black 0 0 5px;
             }
             .container-name{
                 font-size: 18px;
@@ -234,17 +233,19 @@
                 width: 50%;
                 padding: 10px;
                 font-size: 16px;
-                background-color: #5b3a9b;
+                color: #5b3a9b;
+                background-color: white;
                 border-radius: 10px;
-                color: white;
                 border: none;
                 font-family: Verdana;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
+                outline: 1px solid #5b3a9b;
             }
 
             .create-button:hover {
-                background-color: #4a318a;
+                color: white;
+                background-color: #5b3a9b;
             }
             p{
                 font-size: 12px;

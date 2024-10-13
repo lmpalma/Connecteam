@@ -316,12 +316,12 @@
             width: 80%;
             margin: 30px auto;
             border-collapse: collapse;
-            background-color: lightgray;
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
             }
             .main-table th, .main-table td {
-                border: 1px solid #ddd;
                 padding: 12px;
                 text-align: center;
             }
@@ -337,11 +337,20 @@
                 transition: background-color 0.3s;
             }
             .edit-btn {
-                background-color: rgb(46, 19, 83);
+                width: 50%;
+                font-size: 16px;
+                color: white;
+                background-color:#5b3a9b;
+                border-radius: 10px;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
             .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                color: #5b3a9b;
+                background-color: white;
+                outline: 1px solid #5b3a9b;
             }
             .delete-btn {
                 background-color: red;
@@ -452,7 +461,6 @@
                                     @foreach($task->taskFiles as $file)
                                         <div>
                                             <span>{{ $file->file_name }}</span>
-                                            <a href="{{ route('employee.task.files.download', $file->id) }}" class="btn btn-primary">Download</a>
                                         </div>
                                     @endforeach
                                 @else
@@ -460,7 +468,11 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn">Upload</a>
+                            @if($task->taskFiles->isNotEmpty())
+                            <a href="{{ route('admin.task.files.download', $file->id) }}" class="edit-btn"><i class="fa fa-download"></i></a>
+                            @else
+                            @endif
+                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach
