@@ -26,7 +26,7 @@ class EmployeeController extends Controller
         $taskCount = Task::where('assigned_to', $user->id)->count();
         $overdueTaskCount = Task::where('assigned_to', $user->id)
             ->where('status', '!=', 'Completed')
-            ->where('due_date', '<', now())
+            ->whereDate('due_date', '<', now()->toDateString())
             ->count();
         $noDeadlineTaskCount = Task::where('assigned_to', $user->id)
             ->whereNull('due_date')
@@ -52,16 +52,31 @@ class EmployeeController extends Controller
         ]);
     }
 
-    public function myTasks() 
+    public function myTasks(Request $request) 
     {
         $user = Auth::user();
 
-        $tasks = Task::where('assigned_to', $user->id)->get(); 
+        $tasksQuery = Task::where('assigned_to', $user->id);
 
-        return view('employee.task.index', [
-            'user' => $user,
-            'tasks' => $tasks
-        ]);
+        if ($request->has('filter')) {
+            $filter = $request->input('filter');
+
+            switch ($filter) {
+                case 'Pending':
+                    $tasksQuery->where('status', 'Pending');
+                    break;
+                case 'In Progress':
+                    $tasksQuery->where('status', 'In Progress');
+                    break;
+                case 'Completed':
+                    $tasksQuery->where('status', 'Completed');
+                    break;
+            }
+        }
+
+        $tasks = $tasksQuery->get();
+
+        return view('employee.task.index', [ 'user' => $user, 'tasks' => $tasks, 'currentFilter' => $request->input('filter') ]);
     }
 
     public function editTask($id) 
@@ -173,90 +188,4 @@ class EmployeeController extends Controller
             'notifications' => $notifications,
         ]);
     }
-
-//     public function dashboard()
-//     {
-//         return view('employee.dashboard');
-//     }
-// //REGISTRATION FUNCTION
-// public function register(Request $request){
-//     $validator = Validator::make($request->all(), [
-//         'name' => 'required|max:20',
-//         'email' => 'required|email|max:30|unique:admins',
-//         'password' => 'required|min:5|max:16',
-//         'confirm_password' => 'required|min:5|max:16|same:password',
-//         'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif', 
-//         'details' => 'nullable|string|max:255'
-//     ]);
-
-//     if ($validator->fails()){
-//         return response()->json([
-//             'message'=> 'Failed',
-//             'errors' => $validator->errors()
-//         ], 422);
-//     }
-
-//         if ($request->has('photo')) {
-
-//             $file = $request->file('photo');
-//             $extension = $file->getClientOriginalExtension();
-//             $filename = time() . '.' . $extension;
-//             $path = 'uploads/category/';
-//             $file->move($path, $filename);
-//         }
-
-//     $user = employee::create([
-//         'name'=>$request->name,
-//         'email'=>$request->email,
-//         'password'=>Hash::make($request->password),
-//         'photo' => $path . $filename,
-//         'details' => $request->details
-//     ]);
-
-//     return response()->json([
-//         'message'=> 'Registration successful',
-//         'data'=>$user
-//     ], 200);
-// }
-
-// //LOGIN FUNCTION
-// public function login(Request $request) {
-//     $validator = Validator::make($request->all(), [
-//         'email' => 'required|email|max:30',
-//         'password' => 'required|min:5|max:16',
-//     ]);
-
-//     if($validator->fails()) {
-//         return response()->json([
-//             'message' => 'Validation failed',
-//             'errors' => $validator->errors()
-//         ], 422);
-//     }
-
-//     $user = employee::where('email', $request->email)->first();
-
-//     if($user) {
-//         if(Hash::check($request->password, $user->password)) {
-
-//             return response()->json([
-//                 'message' => 'Login successful',
-//                 'data' => $user
-//             ], 200);
-//         } else {
-//             return response()->json([
-//                 'message' => 'Incorrect credentials'
-//             ], 400);
-//         }
-//     }
-// }
-
-// //LOGOUT FUNCTION
-// public function logout(Request $request){
-
-//     Auth::logout();
-//     Session::flush();
-//     return response()->json([
-//         'message' => 'user successfully logged out',
-//     ], 200);
-// }
 }

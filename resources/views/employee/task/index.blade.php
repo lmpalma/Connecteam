@@ -431,6 +431,13 @@
             <!-- <section> -->
                 <h2>MY TASKS</h2>
 
+                <div class="filter-container">
+                    <a href="{{ route('employee.task.index', ['filter' => 'Pending']) }}" class="filter-link" onclick="filterTasks('Pending')">Pending</a>
+                    <a href="{{ route('employee.task.index', ['filter' => 'In Progress']) }}" class="filter-link" onclick="filterTasks('In Progress')">In Progress</a>
+                    <a href="{{ route('employee.task.index', ['filter' => 'Completed']) }}" class="filter-link" onclick="filterTasks('Completed')">Completed</a>
+                    <a href="{{ route('employee.task.index', ['filter' => 'Reset']) }}" class="filter-link" onclick="resetFilters()">Reset</a>
+                </div>
+
                 @if (session('success'))
                     <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">
                         {{ session('success') }}
