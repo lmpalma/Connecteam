@@ -290,14 +290,17 @@
                 width: 120px;
                 height: 30px;
                 font-size: 15px;
-                background: rgba(46, 19, 83, 0.8);
-                border-radius: 10px;
+                background: #5b3a9b;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
                 color: white;
+                border:none;
             }
             .createTask:hover{
-                background-color: rgb(255, 255, 255);
-                color: black;
+                background: white;
+                color: #5b3a9b;
                 cursor: pointer;
+                outline: 1px solid #5b3a9b;
             }
 
             .filter-container {
@@ -327,12 +330,12 @@
             width: 80%;
             margin: 30px auto;
             border-collapse: collapse;
-            background-color: lightgray;
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
             }
             .main-table th, .main-table td {
-                border: 1px solid #ddd;
                 padding: 12px;
                 text-align: center;
             }
@@ -348,18 +351,36 @@
                 transition: background-color 0.3s;
             }
             .edit-btn {
-                background-color: rgb(46, 19, 83);
+                width: 50%;
+                font-size: 16px;
+                color: white;
+                background-color:#5b3a9b;
+                border-radius: 10px;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
             .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                color: #5b3a9b;
+                background-color: white;
+                outline: 1px solid #5b3a9b;
             }
             .delete-btn {
-                background-color: red;
+                width: 50%;
+                font-size: 16px;
+                color: white;
+                background-color: rgb(220,53,69);
+                border-radius: 10px;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
             .delete-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                background-color: white;
+                color: rgb(220,53,69);
+                outline: 1px solid rgb(220,53,69);
             }
 
             .alert-success {
@@ -466,7 +487,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $task->title }}</td>
-                        <td>{{ $task->description }}</td>
+                        <td>{{Str::limit( $task->description,'20','...') }}</td>
                         <td>{{ $task->assignedUser ? $task->assignedUser->name : 'Unassigned' }}</td>
                         <td>
                             {{ $task->due_date ? $task->due_date->format('Y-m-d') : 'N/A' }}
@@ -477,7 +498,6 @@
                                 @foreach($task->taskFiles as $file)
                                     <div>
                                         <span>{{ $file->file_name }}</span>
-                                        <a href="{{ route('admin.task.files.download', $file->id) }}" class="btn btn-primary">Download</a>
                                     </div>
                                 @endforeach
                             @else
@@ -485,9 +505,13 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn">Edit</a>
+                            @if($task->taskFiles->isNotEmpty())
+                            <a href="{{ route('admin.task.files.download', $file->id) }}" class="edit-btn"><i class="fa fa-download"></i></a>
+                            @else
+                            @endif
+                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
                             <a href="{{ route('admin.task.delete', $task->id) }}" class="delete-btn" 
-                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-form-{{ $task->id }}').submit(); }">Delete</a>
+                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-form-{{ $task->id }}').submit(); }"><i class="fa fa-trash"></i></a>
                             <form id="delete-form-{{ $task->id }}" action="{{ route('admin.task.delete', $task->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')

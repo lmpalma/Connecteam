@@ -280,26 +280,29 @@
                 width: 120px;
                 height: 30px;
                 font-size: 15px;
-                background: rgba(46, 19, 83, 0.8);
-                border-radius: 10px;
+                background: #5b3a9b;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
                 color: white;
+                border:none;
             }
             .addUser:hover{
-                background-color: rgb(255, 255, 255);
-                color: black;
+                background: white;
+                color: #5b3a9b;
                 cursor: pointer;
+                outline: 1px solid #5b3a9b;
             }
 
             .main-table {
             width: 80%;
             margin: 30px auto;
             border-collapse: collapse;
-            background-color: lightgray;
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
             }
             .main-table th, .main-table td {
-                border: 1px solid #ddd;
                 padding: 12px;
                 text-align: center;
             }
@@ -315,18 +318,36 @@
                 transition: background-color 0.3s;
             }
             .edit-btn {
-                background-color: rgb(46, 19, 83);
+                width: 50%;
+                font-size: 16px;
+                color: white;
+                background-color:#5b3a9b;
+                border-radius: 10px;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
             .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                color: #5b3a9b;
+                background-color: white;
+                outline: 1px solid #5b3a9b;
             }
             .delete-btn {
-                background-color: red;
+                width: 50%;
+                font-size: 16px;
+                color: white;
+                background-color: rgb(220,53,69);
+                border-radius: 10px;
+                border: none;
+                font-family: Verdana;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
             }
             .delete-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                background-color: white;
+                color: rgb(220,53,69);
+                outline: 1px solid rgb(220,53,69);
             }
 
             .alert-success {
@@ -427,9 +448,9 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn">Edit</a>
+                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
                             <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" 
-                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }">Delete</a>
+                            onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }"><i class="fa fa-trash"></i></a>
                             <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')

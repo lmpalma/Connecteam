@@ -150,7 +150,7 @@
                 padding: 30px;
                 background-color: white;
                 border-radius: 20px;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
                 
             }
 
@@ -232,18 +232,21 @@
                 width: 50%;
                 padding: 10px;
                 font-size: 16px;
-                background-color: #5b3a9b;
+                color: rgb(100, 0, 153);
+                background-color: white;
                 border-radius: 10px;
-                color: white;
                 border: none;
                 font-family: Verdana;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
+                outline: 1px solid rgb(100, 0, 153);
             }
 
             .create-button:hover {
-                background-color: #4a318a;
+                color: white;
+                background-color: rgb(100, 0, 153);
             }
+            
             p{
                 font-size: 12px;
                 font-family: Verdana;
