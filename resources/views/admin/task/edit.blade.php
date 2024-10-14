@@ -132,7 +132,7 @@
 
             .img img {
                 border-radius: 10px;
-                border: 2px solid black;
+                border: 2px solid #5b3a9b;
                 display: block;
                 background-color: #f0f0f0;
             }
@@ -320,22 +320,23 @@
                 <button type = "button" class = "drop-btn" onClick = "menuFunction()"><i class="fa fa-bars"></i></button>
                 <div class = "menu" id = "menuDropdown">
                     <div class="img">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=120&background=random&color=fff" alt="{{ $user->name }}">
+                        <img
+                            src="https://api.dicebear.com/9.x/thumbs/svg?seed={{ urlencode($user->name) }}"
+                            alt="Avatar"
+                            onerror="this.onerror=null; this.src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=120&background=random&color=fff';">
                     </div>
                     <h3 class = "admin-name">{{ $user->name }}</h3>
                     <br><br>
                     <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
                     <span style="margin-left: 10px; font-style: italic;">Dashboard</span></a>
-                    <a class = "menu-list" ><i class="fa fa-bell"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Notifications</span></a>
-                    <a class = "current-page" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
+                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
+                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
+                    <a class = "menu-list" href = "{{ route('admin.task.create') }}"><i class="fa fa-plus"></i>
                     <span style="margin-left: 10px; font-style: italic;">Create Task</a>
                     <a class = "menu-list" href = "{{ route('admin.user.index') }}"><i class="fa fa-users"></i>
                     <span style="margin-left: 10px; font-style: italic;">Manage Users</a>
-                    <a class = "menu-list" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
+                    <a class = "current-page" href = "{{ route('admin.task.index') }}"><i class="fa fa-list-check"></i>
                     <span style="margin-left: 10px; font-style: italic;">All Tasks</a>
-                    <a class = "menu-list" href = "{{ route('admin.notifications') }}"><i class="fa-solid fa-bell"></i>
-                    <span style="margin-left: 10px; font-style: italic;">Notifications</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf
                     </form>

@@ -130,7 +130,7 @@
 
             .img img {
                 border-radius: 10px;
-                border: 2px solid black;
+                border: 2px solid #5b3a9b;
                 display: block;
                 background-color: #f0f0f0;
             }
@@ -276,7 +276,10 @@
                 <button type="button" class="drop-btn" onClick="menuFunction()"><i class="fa fa-bars"></i></button>
                 <div class="menu" id="menuDropdown">
                     <div class="img">
-                        <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=120&background=random&color=fff" alt="{{ $user->name }}">
+                        <img
+                            src="https://api.dicebear.com/9.x/thumbs/svg?seed={{ urlencode($user->name) }}"
+                            alt="Avatar"
+                            onerror="this.onerror=null; this.src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=120&background=random&color=fff';">
                     </div>
                     <h3 class="employee-name">{{ $user->name }}</h3>
                     <br><br>
@@ -286,7 +289,7 @@
                     </a>
                     <a class = "menu-list" href = "{{ route('employee.notifications') }}"><i class="fa-solid fa-bell"></i>
                     <span style="margin-left: 10px; font-style: italic;">Notifications</a>
-                    <a class="menu-list" href="{{ route('employee.task.index') }}">
+                    <a class="current-page" href="{{ route('employee.task.index') }}">
                         <i class="fa fa-rectangle-list"></i>
                         <span style="margin-left: 10px; font-style: italic;">My Tasks</span>
                     </a>
