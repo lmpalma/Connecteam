@@ -122,12 +122,18 @@
             .img{
                 height: 120px;
                 width: 120px;
-                border-radius: 10px;
-                background-color: black;
-                border: 2px black;
                 margin: auto;
                 margin-top: 50px;
+                margin-bottom: 20px;
             }
+
+            .img img {
+                border-radius: 10px;
+                border: 2px solid black;
+                display: block;
+                background-color: #f0f0f0;
+            }
+
             .admin-name{
                 font-size: 16px;
                 font-family: Verdana;
@@ -394,7 +400,9 @@
             <div class = "dropdown-menu">
                 <button type = "button" class = "drop-btn" onClick = "menuFunction()"><i class="fa fa-bars"></i></button>
                 <div class = "menu" id = "menuDropdown">
-                    <div class = "img"></div>
+                    <div class="img">
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&size=120&background=random&color=fff" alt="{{ $user->name }}">
+                    </div>
                     <h3 class = "admin-name">{{ $user->name }}</h3>
                     <br><br>
                     <a class = "menu-list" href = "{{ route('admin.dashboard') }}"><i class="fa fa-layer-group"></i>
