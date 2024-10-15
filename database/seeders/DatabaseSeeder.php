@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         if (User::count() === 0) {
             User::create([
                 'name' => 'Super Admin',
-                'email' => 'connecteam35@gmail.com',
+                'email' => 'connecteam9@gmail.com',
                 'password' => Hash::make('connecteamadmin'),
                 'role' => 'superadmin',
                 'manager_id' => null
