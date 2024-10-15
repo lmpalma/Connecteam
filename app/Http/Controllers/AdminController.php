@@ -124,7 +124,7 @@ class AdminController extends Controller
                     $tasksQuery->whereNull('due_date');
                     break;
                 case 'overdue':
-                    $tasksQuery->where('due_date', '<', now());
+                    $tasksQuery->whereDate('due_date', '<', now()->format('Y-m-d'));
                     break;
             }
         }
@@ -317,5 +317,30 @@ class AdminController extends Controller
             'user' => $user,
             'notifications' => $notifications,
         ]);
+    }
+
+    public function fetchNotifications()
+    {
+        $user = Auth::user();
+        $notifications = Notification::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        $hasNewNotifications = $notifications->isNotEmpty();
+
+        return response()->json([
+            'notifications' => $notifications,
+            'hasNewNotifications' => $hasNewNotifications,
+        ]);
+    }
+
+    public function deleteNotif($id)
+    {
+        $notification = Notification::findOrFail($id);
+
+        $notification->delete();
+
+        return redirect()->route('admin.notifications')->with('success', 'Notification deleted successfully.');
     }
 }

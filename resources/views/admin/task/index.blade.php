@@ -417,6 +417,96 @@
                 font-size: 16px;
             }
 
+            .notif-btn{
+                color: white;
+                font-size: 38px;
+                border: none;
+                cursor: pointer;
+                background-color: transparent;
+                font-stretch: wider;
+                padding: 12px;
+                position: relative;
+            }
+
+            .badge {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: red;
+                display: inline-block;
+                border: 1px solid white;
+            }
+
+            .dropdown-notif {
+                position: relative;
+                display: inline-block;
+                margin-right: 50px;
+                margin-left: auto;
+            }
+
+            .dropdown-notif .show {
+                display: block;
+            }
+            
+            .notif {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 15vw;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                margin-top: 10px;
+                box-shadow: rgb(58, 34, 82) 0 0 4px;
+                right: 0;
+            }
+
+            .notif-name{
+                font-size: 16px;
+                font-family: Verdana;
+                font-weight: bold;
+                margin: 10px;
+                margin-top: 15px;
+                color: black;
+                text-align: center;
+                border-bottom: 1px solid lightgray;
+            }
+
+            .notif-item {
+                width: 100%;
+                text-decoration: none;
+                font-size: 16px;
+                font-family: Verdana, sans-serif;
+                list-style-type: none;
+                padding: 12px 0;
+                border-bottom: 1px solid lightgray;
+                text-align: center;
+                display: block;
+                color: black;
+                transition: background-color 0.2s;
+            }
+
+            .notif-item:hover {
+                background: rgba(46, 19, 83, 0.3);
+                color: rgb(41, 6, 75);
+            }
+
+            .view-all-notifications {
+                text-decoration: underline;
+                font-weight: normal;
+                color: black;
+                display: block;
+                font-style: normal;
+                padding: 12px 0;
+                text-align: center;
+            }
+
+            .view-all-notifications:hover {
+                background-color: #f0f0f0;
+            }
+
             @media (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
@@ -462,6 +552,18 @@
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
+
+            <div class = "dropdown-notif">
+                <button type = "button" class = "notif-btn" onClick = "notifFunction()"><i class="fa-solid fa-bell"></i><span id="notifBadge" class="badge" style="display: none;"></span></button>
+                <div class = "notif" id = "notifDropdown">
+                    <h3 class="notif-name">Notifications</h3>
+                    <div id="notifContent">
+                        <a class="notif-item">Loading notifications...</a>
+                    </div>
+                    <a class="view-all-notifications" href="{{ route('admin.notifications') }}">View All Notifications</a>
+                </div>
+            </div>
+
         </div>
         <div class = "page">
             <!-- <section> -->
@@ -541,22 +643,104 @@
         </div>
     </footer>
     <script>
+        let hasNewNotifications = false;
+
         function menuFunction() {
             document.getElementById("menuDropdown").classList.toggle("show");
         }
 
-        window.onclick = function(event) {
-            if (!event.target.matches('.drop-btn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-menu");
-                var i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
+        function notifFunction() {
+            const notifDropdown = document.getElementById("notifDropdown");
+            const notifContent = document.getElementById("notifContent");
+            const notifBadge = document.getElementById("notifBadge");
+
+            notifDropdown.classList.toggle("show");
+
+            if (notifDropdown.classList.contains("show")) {
+                notifContent.innerHTML = '<a class="notif-item">Loading notifications...</a>';
+                notifBadge.style.display = "none";
+
+                fetch('{{ route('admin.notifications.fetch') }}')
+                    .then(response => response.json())
+                    .then(data => {
+                        notifContent.innerHTML = "";
+
+                        const notifications = data.notifications;
+
+                        hasNewNotifications = data.hasNewNotifications;
+
+                        if (notifications.length > 0) {
+                            notifications.forEach(notification => {
+                                const notifItem = document.createElement('a');
+                                notifItem.classList.add('notif-item');
+                                notifItem.href = '{{ route('admin.task.index') }}';
+                                notifItem.innerHTML = notification.message;
+                                notifContent.appendChild(notifItem);
+                            });
+                        } else {
+                            notifContent.innerHTML = '<a class="notif-item">No new notifications</a>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching notifications:', error);
+                        notifContent.innerHTML = '<a class="notif-item">Error loading notifications</a>';
+                    });
+            } else {
+                notifBadge.style.display = "none"; 
+                hasNewNotifications = false;
             }
         }
+
+        function checkForNewNotifications() {
+            fetch('{{ route('admin.notifications.fetch') }}')
+                .then(response => response.json())
+                .then(data => {
+                    const notifications = data.notifications;
+
+                    hasNewNotifications = data.hasNewNotifications;
+
+                    const notifBadge = document.getElementById("notifBadge");
+                    if (hasNewNotifications) {
+                        notifBadge.style.display = "inline-block"; 
+                    } else {
+                        notifBadge.style.display = "none";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking notifications on load:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            checkForNewNotifications();
+        });
+
+        window.onclick = function(event) {
+            var menuDropdown = document.getElementById("menuDropdown");
+            var menuButton = document.querySelector('.drop-btn');
+            
+            var notifDropdown = document.getElementById("notifDropdown");
+            var notifButton = document.querySelector('.notif-btn');
+            
+            if (!menuButton.contains(event.target) && !menuDropdown.contains(event.target)) {
+                if (menuDropdown.classList.contains('show')) {
+                    menuDropdown.classList.remove('show');
+                }
+            }
+
+            if (!notifButton.contains(event.target) && !notifDropdown.contains(event.target)) {
+                if (notifDropdown.classList.contains('show')) {
+                    notifDropdown.classList.remove('show');
+                }
+            }
+        };
+
+        function initNotificationBadge() {
+            const notifBadge = document.getElementById("notifBadge");
+            notifBadge.style.display = hasNewNotifications ? "inline-block" : "none";
+        }
+
+        document.addEventListener('DOMContentLoaded', initNotificationBadge);
 
     </script>
 </html>

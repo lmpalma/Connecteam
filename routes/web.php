@@ -30,6 +30,8 @@ Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name
 Route::middleware(['isAdmin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/notifications', [AdminController::class, 'viewNotifications'])->name('admin.notifications');
+    Route::get('/admin/notifications/fetch', [AdminController::class, 'fetchNotifications'])->name('admin.notifications.fetch');
+    Route::delete('/admin/notifications/{id}', [AdminController::class, 'deleteNotif'])->name('admin.notifications.delete');
 
     // task routes
     Route::get('/admin/task/create',[AdminController::class,'create'])->name('admin.task.create');
@@ -55,6 +57,8 @@ Route::middleware(['isAdmin'])->group(function () {
 Route::middleware(['isEmployee'])->group(function () {
     Route::get('/employee/dashboard', [EmployeeController::class, 'dashboard'])->name('employee.dashboard');
     Route::get('/employee/notifications', [EmployeeController::class, 'viewNotifications'])->name('employee.notifications');
+    Route::get('/employee/notifications/fetch', [EmployeeController::class, 'fetchNotifications'])->name('employee.notifications.fetch');
+    Route::delete('/employee/notifications/{id}', [EmployeeController::class, 'deleteNotif'])->name('employee.notifications.delete');
 
     // task routes
     Route::get('/employee/task/index', [EmployeeController::class, 'myTasks'])->name('employee.task.index');

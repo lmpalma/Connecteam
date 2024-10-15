@@ -188,4 +188,29 @@ class EmployeeController extends Controller
             'notifications' => $notifications,
         ]);
     }
+
+    public function fetchNotifications()
+    {
+        $user = Auth::user();
+        $notifications = Notification::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        $hasNewNotifications = $notifications->isNotEmpty();
+
+        return response()->json([
+            'notifications' => $notifications,
+            'hasNewNotifications' => $hasNewNotifications,
+        ]);
+    }
+
+    public function deleteNotif($id)
+    {
+        $notification = Notification::findOrFail($id);
+
+        $notification->delete();
+
+        return redirect()->route('employee.notifications')->with('success', 'Notification deleted successfully.');
+    }
 }
