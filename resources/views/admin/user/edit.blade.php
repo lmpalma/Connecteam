@@ -11,7 +11,7 @@
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg1.png') }}');
+                background-image: url('{{ asset('assets/images/bg3.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
