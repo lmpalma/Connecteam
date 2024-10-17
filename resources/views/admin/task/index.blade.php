@@ -619,11 +619,11 @@
                         </td>
                         <td>
                             @if($task->taskFiles->isNotEmpty())
-                            <a href="{{ route('admin.task.files.download', $file->id) }}" class="edit-btn"><i class="fa fa-download"></i></a>
+                            <a href="{{ route('admin.task.files.download', $file->id) }}" class="edit-btn" title = "download file"><i class="fa fa-download"></i></a>
                             @else
                             @endif
-                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('admin.task.delete', $task->id) }}" class="delete-btn" 
+                            <a href="{{ route('admin.task.edit', $task->id) }}" class="edit-btn" title = "edit task"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ route('admin.task.delete', $task->id) }}" class="delete-btn" title = "delete task"
                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this task?')) { document.getElementById('delete-form-{{ $task->id }}').submit(); }"><i class="fa fa-trash"></i></a>
                             <form id="delete-form-{{ $task->id }}" action="{{ route('admin.task.delete', $task->id) }}" method="POST" style="display: none;">
                                 @csrf

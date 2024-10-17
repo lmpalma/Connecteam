@@ -11,7 +11,7 @@
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg1.png') }}');
+                background-image: url('{{ asset('assets/images/bg3.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
@@ -155,7 +155,7 @@
                 padding: 30px;
                 background-color: white;
                 border-radius: 20px;
-                box-shadow: rgba(0, 0, 0, 0.1) 0 0 4px;
+                box-shadow:purple 0 0 4px;
             }
 
             
@@ -169,7 +169,7 @@
                 border-radius: 20px;
                 margin-top: 30px;
                 margin-bottom: 30px;
-                box-shadow: black 0 0 5px;
+                
             }
             .container-name{
                 font-size: 18px;
@@ -292,7 +292,7 @@
                 color: white;
                 text-align: center;
                 padding: 30px;
-                margin-top: auto;
+                margin-top: 30px;
                 display: flex;
                 justify-content: center;
                 align-items: center;

@@ -156,7 +156,7 @@
                 padding: 30px;
                 background-color: white;
                 border-radius: 20px;
-                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+                box-shadow:purple 0 0 4px;
                 
             }
 

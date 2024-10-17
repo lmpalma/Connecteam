@@ -10,7 +10,7 @@
         <style>
             body {
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg2.png') }}');
+                background-image: url('{{ asset('assets/images/bg3.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
@@ -183,6 +183,24 @@
                 border: none;
             }
             .edit-btn:hover {
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 0, 0);
+                cursor: pointer;
+            }
+
+            /*upload button*/
+            .upload-btn {
+                margin: 25px auto 0; 
+                display: block;
+                width: 50%;
+                height: 30px;
+                font-size: 15px;
+                background-color: rgb(46, 19, 83);
+                border-radius: 10px;
+                color: white;
+                border: none;
+            }
+            .upload-btn:hover {
                 background-color: rgb(255, 255, 255);
                 color: rgb(0, 0, 0);
                 cursor: pointer;
@@ -431,7 +449,7 @@
                         @csrf
                         @method('PUT')
                         <input type="file" name="task_files[]" multiple required>
-                        <button type="submit" class="edit-btn">Upload Files</button>
+                        <button type="submit" class="upload-btn">Upload Files</button>
                     </form>
                 </div>
             </div>

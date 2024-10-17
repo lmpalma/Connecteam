@@ -561,8 +561,8 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
-                            <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" 
+                            <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn" title = "edit user"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" title = "delete user"
                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }"><i class="fa fa-trash"></i></a>
                             <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" style="display: none;">
                                 @csrf

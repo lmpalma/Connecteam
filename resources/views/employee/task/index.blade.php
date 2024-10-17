@@ -589,10 +589,12 @@
                             </td>
                             <td>
                             @if($task->taskFiles->isNotEmpty())
+
                             <a href="{{ route('employee.task.files.download', $file->id) }}" class="edit-btn"><i class="fa fa-download"></i></a>
+
                             @else
                             @endif
-                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ route('employee.task.edit', $task->id) }}" class="edit-btn" title = "edit task"><i class="fa fa-pencil"></i></a>
                             </td>
                         </tr>
                     @endforeach
