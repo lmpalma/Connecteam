@@ -300,13 +300,13 @@
             }
 
             .main-table {
-            width: 80%;
-            margin: 30px auto;
-            border-collapse: collapse;
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+                width: 80%;
+                margin: 30px auto;
+                border-collapse: collapse;
+                background-color: white;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
             }
             .main-table th, .main-table td {
                 padding: 12px;
@@ -355,6 +355,10 @@
                 color: rgb(220,53,69);
                 outline: 1px solid rgb(220,53,69);
             }
+            /* .action-btns{
+                display:flex;
+                
+            } */
 
             .alert-success {
                 padding: 10px;
@@ -560,7 +564,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
-                        <td>
+                        <td class = "action-btns">
                             <a href="{{ route('admin.user.edit', $user->id) }}" class="edit-btn" title = "edit user"><i class="fa fa-pencil"></i></a>
                             <a href="{{ route('admin.user.delete', $user->id) }}" class="delete-btn" title = "delete user"
                             onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')) { document.getElementById('delete-form-{{ $user->id }}').submit(); }"><i class="fa fa-trash"></i></a>

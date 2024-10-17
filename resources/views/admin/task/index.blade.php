@@ -388,6 +388,9 @@
                 color: rgb(220,53,69);
                 outline: 1px solid rgb(220,53,69);
             }
+            .action-btns{
+                display: flex;
+            }
 
             .alert-success {
                 padding: 10px;
@@ -617,7 +620,7 @@
                                 <span>No files uploaded.</span>
                             @endif
                         </td>
-                        <td>
+                        <td class = "action-btns">
                             @if($task->taskFiles->isNotEmpty())
                             <a href="{{ route('admin.task.files.download', $file->id) }}" class="edit-btn" title = "download file"><i class="fa fa-download"></i></a>
                             @else

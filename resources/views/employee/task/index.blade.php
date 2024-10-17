@@ -331,6 +331,9 @@
                 padding: 12px;
                 text-align: center;
             }
+            .action-btns{
+                display: flex;
+            }
             .main-table th {
                 background-color: #5b3a9b;
                 color: white;
@@ -404,6 +407,11 @@
                 padding: 12px;
                 position: relative;
             }
+
+            /* .action-btns{
+                display: flex;
+                flex-wrap: wrap;
+            } */
 
             .badge {
                 position: absolute;
@@ -587,7 +595,7 @@
                                     <span>No files uploaded.</span>
                                 @endif
                             </td>
-                            <td>
+                            <td class = "action-btns">
                             @if($task->taskFiles->isNotEmpty())
 
                             <a href="{{ route('employee.task.files.download', $file->id) }}" class="edit-btn"><i class="fa fa-download"></i></a>
