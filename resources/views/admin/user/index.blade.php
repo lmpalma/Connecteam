@@ -279,11 +279,14 @@
             .btn-container{
                 width: 100%;
                 height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
-            .addUser{
-                margin: auto;
+            .addUser, .exportUsers, .exportUsersAndTasks {
+                margin: 0 10px;
                 display: block;
-                width: 120px;
+                width: 180px;
                 height: 30px;
                 font-size: 15px;
                 background: #5b3a9b;
@@ -292,7 +295,7 @@
                 color: white;
                 border:none;
             }
-            .addUser:hover{
+            .addUser:hover, .exportUsers:hover, .exportUsersAndTasks:hover {
                 background: white;
                 color: #5b3a9b;
                 cursor: pointer;
@@ -541,7 +544,10 @@
                 <h2>MANAGE USERS</h2>
                 <div class = "btn-container">
                     <button type="button" class="addUser" onclick="window.location.href='{{ route('admin.user.create') }}'">Add User</button>
+                    <button type="button" class="exportUsers" onclick="window.location.href='{{ route('admin.export.users') }}'">Export Users</button>
+                    <button type="button" class="exportUsersAndTasks" onclick="window.location.href='{{ route('admin.export.combined') }}'">Export Users and Tasks</button>
                 </div>
+
 
                 @if (session('success'))
                     <div class="alert-success" style="display: flex; justify-content: center; align-items: center; margin: 20px auto; width: fit-content;">

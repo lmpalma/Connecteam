@@ -50,6 +50,10 @@ Route::middleware(['isAdmin'])->group(function () {
     Route::put('/admin/user/{id}', [AdminController::class, 'updateUser'])->name('admin.user.update');
     Route::delete('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
 
+    Route::get('/admin/export/users', [AdminController::class, 'exportUsers'])->name('admin.export.users');
+    Route::get('/admin/export/tasks', [AdminController::class, 'exportTasks'])->name('admin.export.tasks');
+    Route::get('/admin/export/combined', [AdminController::class, 'exportCombined'])->name('admin.export.combined');
+
 });
 
 // EMPLOYEE ROUTES

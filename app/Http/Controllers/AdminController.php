@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Hash;
+use App\Exports\UsersExport;
+use App\Exports\TasksExport;
+use App\Exports\CombinedExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
@@ -342,5 +346,20 @@ class AdminController extends Controller
         $notification->delete();
 
         return redirect()->route('admin.notifications')->with('success', 'Notification deleted successfully.');
+    }
+
+    public function exportUsers()
+    {
+        return Excel::download(new UsersExport, 'employees.xlsx');
+    }
+
+    public function exportTasks()
+    {
+        return Excel::download(new TasksExport, 'tasks.xlsx');
+    }
+
+    public function exportCombined()
+    {
+        return Excel::download(new CombinedExport, 'employees_and_tasks.xlsx');
     }
 }

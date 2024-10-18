@@ -45,6 +45,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Task::class, 'admin_id');
     }
+    public function assignedTasks()
+    {
+        return $this->hasMany(Task::class, 'assigned_to');
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -65,4 +69,5 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->verification_code = Str::random(40);
         $this->save();
     }
+
 }
