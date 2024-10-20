@@ -11,12 +11,12 @@
         <style>
             body{
                 min-height: 100vh;
-                background-image: url('{{ asset('assets/images/bg3.png') }}');
+                /* background-image: url('{{ asset('assets/images/bg2.png') }}'); */
+                background: rgba(46, 19, 83, 0.3);
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
                 font-family: Verdana, sans-serif;
-                width: 100%;
             }
             .page{
                 width: 100%;
@@ -24,14 +24,14 @@
             }
             .header{
                 width: 100%;
-                background-color: #5b3a9b;
+                background: white;
                 align-items: center;
                 height: 10vh;
                 margin-top: 0;
                 margin-bottom: 5px;
                 display: flex;
-                padding: 0 20px;
                 z-index: 1;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6)
             }
             .web-img{
                 margin-left: 20px;
@@ -45,26 +45,21 @@
                 margin-top: auto;
                 margin-bottom: auto;
                 align-items: center;
-                font-size: 20px;
+                font-size: 22px;
                 font-family: Verdana;
-                color: white;
+                color: #5b3a9b;
             }
-            .notif-bell{
-                margin-inline-start: 72%;
-                padding: 10px;
-                width: 40px;
-                height: 40px;
-
-            }
+            
             /* Left Menu (Profile) */
             .drop-btn{
-                color: white;
+                color: #5b3a9b;
                 font-size: 38px;
                 border: none;
                 cursor: pointer;
                 background-color: transparent;
                 font-stretch: wider;
                 padding: 12px;
+                margin-left: 26px;
             }
             .menu{
                 display: none;
@@ -73,7 +68,8 @@
                 min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 20px;
+                margin-top: 5px;
+                box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
             .menu-list{
                 width: 100%;
@@ -85,13 +81,12 @@
                 padding-bottom: 18px;
                 border: solid lightgray 2px;
                 text-align: center;
-                display: inline-block;
+                display: block;
                 color: black;
             }
             .dropdown-menu{
                 position: relative;
                 display: inline-block;
-                margin-left: 24px;
             }
             .drop-btn:hover{
                 cursor: pointer;
@@ -185,9 +180,21 @@
                 font-weight: bold;
             }
 
-            input[type="text"], textarea, input[type="date"], select {
+            input[type="text"], textarea, input[type="date"] {
                 min-width: 96%;
                 max-width: 96%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 10px;
+                border: solid 1px #cccccc;
+                background: rgba(252, 252, 252, 0.9);
+                font-family: Verdana;
+                font-size: 14px;
+                transition: border-color 0.3s ease;
+            }
+            select{
+                min-width: 100%;
+                max-width: 100%;
                 padding: 10px;
                 margin-bottom: 15px;
                 border-radius: 10px;
@@ -203,38 +210,6 @@
                 outline: none;
             }
 
-            /* .input-box{
-                min-width: 38vw;
-                max-width: 38vw;
-                margin: 2px;
-                margin-left: 10px;
-                height: 25px;
-                font-size: 14px;
-                background: rgba(252, 252, 252, 0.7);
-                border-radius: 10px;
-                border: solid black 2px;
-            }
-            .input-box2{
-                min-width: 38vw;
-                max-width: 38vw;
-                margin: 2px;
-                margin-left: 10px;
-                height: 10vh;
-                font-size: 14px;
-                background: rgba(252, 252, 252, 0.7);
-                border-radius: 10px;
-                border: solid black 2px;
-            }
-            .input-box3{
-                width: 15vw;
-                margin: 2px;
-                margin-left: 10px;
-                height: 25px;
-                font-size: 14px;
-                background: rgba(252, 252, 252, 0.7);
-                border-radius: 10px;
-                border: solid black 2px;
-            } */
             .create-button {
                 width: 50%;
                 padding: 10px;
@@ -285,27 +260,29 @@
                 margin-left: 20px;
                 color: #5b3a9b;
             }
-            
-            .footer-bar{
-                height: 10vh;
-                background-color: #5b3a9b;
-                color: white;
+            /*footer-css*/
+            .footer-bar {
+                height: 8vh;
+                background-color: white;
+                color: #5b3a9b;
                 text-align: center;
                 padding: 30px;
-                margin-top: 30px;
+                margin-top: 40px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                width: 100%;
+                box-shadow: black 2px 0 5px;
             }
             h4{
                 font-size: 12px;
                 text-align: center;
-                padding: 30px;
+                padding: 20px;
+                color: #5b3a9b;
             }
 
+            /*notification-dropdown-css*/
             .notif-btn{
-                color: white;
+                color: #5b3a9b;
                 font-size: 38px;
                 border: none;
                 cursor: pointer;
@@ -330,7 +307,7 @@
             .dropdown-notif {
                 position: relative;
                 display: inline-block;
-                margin-right: 50px;
+                margin-right: 20px;
                 margin-left: auto;
             }
 
@@ -341,23 +318,26 @@
             .notif {
                 display: none;
                 position: absolute;
-                background-color: #f9f9f9;
-                min-width: 15vw;
+                background-color: #6a4a9b;
+                min-width: 20vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 10px;
+                margin-top: 5px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
                 right: 0;
+                border-radius: 5px;
+                padding: 5px;
             }
 
             .notif-name{
-                font-size: 16px;
+                font-size: 18px;
                 font-family: Verdana;
                 font-weight: bold;
-                margin: 10px;
-                margin-top: 15px;
-                color: black;
+                padding-bottom: 16px;
+                color: white;
+                /* background:  rgba(46, 19, 83, 0.2); */
                 text-align: center;
+                border-radius: 5px;
                 border-bottom: 1px solid lightgray;
             }
 
@@ -367,27 +347,31 @@
                 font-size: 16px;
                 font-family: Verdana, sans-serif;
                 list-style-type: none;
-                padding: 12px 0;
+                padding: 14px 0;
                 border-bottom: 1px solid lightgray;
                 text-align: center;
-                display: block;
-                color: black;
+                display: inline-block;
+                color: white;
                 transition: background-color 0.2s;
             }
 
             .notif-item:hover {
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
+                background: rgba(200, 190, 240, 0.3);
+                color: white;
             }
 
             .view-all-notifications {
                 text-decoration: underline;
                 font-weight: normal;
-                color: black;
+                color: white;
                 display: block;
                 font-style: normal;
                 padding: 12px 0;
                 text-align: center;
+            }
+
+            .view-all-notifications:hover {
+                background-color: #f0f0f0;
             }
 
             .view-all-notifications:hover {
@@ -438,7 +422,7 @@
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
-            <h1 class = "web-title">Connecteam</h1>
+            <h1 class = "web-title">Admin Panel</h1>
 
             <div class = "dropdown-notif">
                 <button type = "button" class = "notif-btn" onClick = "notifFunction()"><i class="fa-solid fa-bell"></i><span id="notifBadge" class="badge" style="display: none;"></span></button>
