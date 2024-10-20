@@ -346,25 +346,26 @@
                 font-weight: bold;
                 padding-bottom: 16px;
                 color: white;
-                /* background:  rgba(46, 19, 83, 0.2); */
                 text-align: center;
                 border-radius: 5px;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid lightgray;
             }
 
             .notif-item {
                 width: 100%;
                 text-decoration: none;
-                font-size: 16px;
+                font-size: 15px;
                 font-family: Verdana, sans-serif;
                 list-style-type: none;
-                padding: 14px 0;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid lightgray;
                 text-align: center;
                 display: inline-block;
                 color: white;
                 transition: background-color 0.2s;
+                padding-bottom: 16px;
+                padding-top: 10px;
             }
+
 
             .notif-item:hover {
                 background: rgba(200, 190, 240, 0.3);

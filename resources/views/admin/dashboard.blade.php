@@ -294,7 +294,7 @@
                 color: white;
                 text-align: center;
                 border-radius: 5px;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid lightgray;
             }
 
             .notif-item {
@@ -303,12 +303,12 @@
                 font-size: 15px;
                 font-family: Verdana, sans-serif;
                 list-style-type: none;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid lightgray;
                 text-align: center;
                 display: inline-block;
                 color: white;
                 transition: background-color 0.2s;
-                padding-bottom: 10px;
+                padding-bottom: 16px;
                 padding-top: 10px;
             }
 
