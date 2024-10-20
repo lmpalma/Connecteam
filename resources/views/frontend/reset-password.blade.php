@@ -24,12 +24,12 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.8);
             z-index: 1;
-            padding: 0 20px;
         }
         .web-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            margin-left: 24px;
         }
         .web-title {
             margin-left: 15px;
@@ -51,7 +51,7 @@
             padding: 40px;
             background-color: white;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,31 +63,41 @@
             align-self: flex-start;
             margin-bottom: 5px;
         }
-        input {
-            width: 94%;
+        input[type="text"], input[type="password"] {
+            width: 98%;
+            margin-left: auto;
+            margin-right:auto;
             height: 40px; 
             font-size: 16px;
             margin: 10px 0; 
-            padding: 0 10px; 
-            background: rgba(155, 62, 164, 0.5);
-            border: 2px solid rgb(100, 0, 153);
-            border-radius: 10px;
+            background: white;
+            border: solid 1px #cccccc;
+            border-radius: 5px;
             outline: none;
+            transition: border-color 0.3s ease;
         }
+        
         button {
             margin-top: 15px;
             width: 100%;
             height: 40px;
             font-size: 16px; 
             color: white;
-            background-color: rgb(100, 0, 153);
+            background-color: #5b3a9b;;
             border-radius: 10px;
             cursor: pointer;
             border: none;
             transition: background-color 0.3s;
+            outline: 1px solid #5b3a9b;;
         }
         button:hover {
-            background-color: rgb(0, 0, 0);
+            color: #5b3a9b;;
+            background-color: white;
+        }
+        .show-pw{
+            font-family: Verdana;
+            font-size: 14px;
+            color: black;
         }
         p {
             font-size: 12px;
@@ -118,6 +128,7 @@
             text-align: center;
             margin: 0;
             margin-bottom: 20px;
+            margin-top: 24px;
         }
         .intro {
             font-size: 18px;
@@ -207,7 +218,9 @@
                 
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" class="input-box" placeholder="Confirm your new password" required>
-                
+                <div class = "show-pw-section">
+                    <input type="checkbox" onclick="myFunction()"><span class ="show-pw">Show Password</span>
+                </div>
                 <button type="submit" class="resetPass-btn">RESET PASSWORD</button>
 
                 <p>Go back to <a href="{{ route('frontend.login') }}">Login</a></p>
@@ -219,5 +232,18 @@
             <h4>©️ 2024 - Connecteam | All rights reserved.</h4>
         </div>
     </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            var y = document.getElementById("password_confirmation");
+            if (x.type === "password" && y.type === "password") {
+                x.type = "text";
+                y.type = "text"
+            } else {
+                x.type = "password";
+                y.type = "password";
+            }
+        }
+    </script>
 </body>
 </html>

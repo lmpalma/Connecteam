@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <title>Connecteam - Profile</title>
         <style>
-            body {
+           body{
                 min-height: 100vh;
                 background-image: url('{{ asset('assets/images/bg2.png') }}');
                 background-repeat: no-repeat;
@@ -16,44 +16,42 @@
                 margin: 0;
                 font-family: Verdana, sans-serif;
             }
-            .page {
+            .page{
                 width: 100%;
-                min-height: 90vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                min-height: 50vh;
             }
-            .header {
+            .header{
                 width: 100%;
-                background-color: #5b3a9b;
+                background: #382E90;
                 align-items: center;
                 height: 10vh;
                 margin-top: 0;
                 margin-bottom: 5px;
                 display: flex;
-                padding: 0 20px;
                 z-index: 1;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6)
             }
-            .web-img {
+            .web-img{
                 margin-left: 20px;
                 padding: 10px;
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
             }
-            .web-title {
+            .web-title{
                 justify-content: space-around;
                 margin-top: auto;
                 margin-bottom: auto;
                 align-items: center;
-                font-size: 20px;
+                font-size: 22px;
                 font-family: Verdana;
                 color: white;
             }
-            .page-area {
+            .page-area{
                 padding: 10px;
                 margin-top: 10px;
                 margin-bottom: 10px;
+                
             }
             /* Left Menu (Profile) */
             .drop-btn{
@@ -64,6 +62,7 @@
                 background-color: transparent;
                 font-stretch: wider;
                 padding: 12px;
+                margin-left: 26px;
             }
             .menu{
                 display: none;
@@ -72,7 +71,7 @@
                 min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 20px;
+                margin-top: 5px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
             .menu-list{
@@ -85,13 +84,12 @@
                 padding-bottom: 18px;
                 border: solid lightgray 2px;
                 text-align: center;
-                display: inline-block;
+                display: block;
                 color: black;
             }
             .dropdown-menu{
                 position: relative;
                 display: inline-block;
-                margin-left: 24px;
             }
             .drop-btn:hover{
                 cursor: pointer;
@@ -149,9 +147,12 @@
                 max-width: 400px;
                 padding: 40px;
                 border: solid #5b3a9b 2px;
-                background-color: #e3e8e8;
+                background-color: white;
                 border-radius: 20px;
                 text-align: center;
+                margin-top: 10%;
+                margin-left: auto;
+                margin-right:auto;
             }
             .container-name{
                 font-size: 18px;
@@ -176,24 +177,27 @@
                 display: block;
                 width: 50%;
                 height: 30px;
-                font-size: 15px;
-                background-color: rgb(46, 19, 83);
-                border-radius: 10px;
+                font-size: 16px;
                 color: white;
+                background-color: #5b3a9b;;
+                border-radius: 10px;
+                cursor: pointer;
                 border: none;
+                transition: background-color 0.3s;
+                outline: 1px solid #5b3a9b;
             }
             .edit-btn:hover {
-                background-color: rgb(255, 255, 255);
-                color: rgb(0, 0, 0);
+                color: #5b3a9b;
+                background-color: white;
                 cursor: pointer;
             }
             .footer-bar {
-                height: 10vh;
-                background-color: #5b3a9b;
+                height: 8vh;
+                background-color: #382E90;
                 color: white;
                 text-align: center;
                 padding: 30px;
-                margin-top: auto;
+                margin-top: 8%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -215,7 +219,6 @@
             h3 {
                 font-family: Verdana;
                 font-size: 16px;
-                margin-top: 40px;
             }
             p {
                 margin: 20px;
@@ -234,7 +237,7 @@
                 font-family: Tahoma;
                 font-size: 16px;
             }
-
+            /*notification-css-employee*/
             .notif-btn{
                 color: white;
                 font-size: 38px;
@@ -261,7 +264,7 @@
             .dropdown-notif {
                 position: relative;
                 display: inline-block;
-                margin-right: 50px;
+                margin-right: 20px;
                 margin-left: auto;
             }
 
@@ -272,43 +275,46 @@
             .notif {
                 display: none;
                 position: absolute;
-                background-color: #f9f9f9;
-                min-width: 15vw;
+                background-color: #DFB2FF;
+                min-width: 20vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 10px;
+                margin-top: 5px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
                 right: 0;
+                border-radius: 5px;
+                padding: 6px;
             }
 
             .notif-name{
-                font-size: 16px;
+                font-size: 18px;
                 font-family: Verdana;
                 font-weight: bold;
-                margin: 10px;
-                margin-top: 15px;
+                padding-bottom: 16px;
                 color: black;
                 text-align: center;
-                border-bottom: 1px solid lightgray;
+                border-radius: 5px;
+                border-bottom: 2px solid white;
             }
 
             .notif-item {
                 width: 100%;
                 text-decoration: none;
-                font-size: 16px;
+                font-size: 15px;
                 font-family: Verdana, sans-serif;
                 list-style-type: none;
-                padding: 12px 0;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid white;
                 text-align: center;
-                display: block;
+                display: inline-block;
                 color: black;
                 transition: background-color 0.2s;
+                padding-bottom: 16px;
+                padding-top: 10px;
             }
 
             .notif-item:hover {
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
+                background-color: #f0f0f0;
+                color: #382E90;
             }
 
             .view-all-notifications {
@@ -324,6 +330,7 @@
             .view-all-notifications:hover {
                 background-color: #f0f0f0;
             }
+            
 
             @media (max-width: 768px) {
                 .left-nav {
@@ -371,7 +378,7 @@
                     </a>            
                 </div>
             </div>
-            <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
+            <img src="{{ asset('assets/images/icon2.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class="web-title">Connecteam</h1>
 
             <div class = "dropdown-notif">
@@ -389,7 +396,7 @@
         <div class="page">
 
             <div class="container">
-                <h2>PROFILE</h2>
+                <h2>EMPLOYEE PROFILE</h2>
                 <div class="info">
                     <strong>Full Name:</strong> {{ $user->name }}
                 </div>
@@ -409,7 +416,7 @@
                     </div>
                 @endif
 
-                <button class="edit-btn" onclick="location.href='{{ route('employee.profile.edit') }}'">Edit Profile</button>
+                <button class="edit-btn" onclick="location.href='{{ route('employee.profile.edit') }}'">EDIT PROFILE</button>
             </div>
         </div>
     </body>

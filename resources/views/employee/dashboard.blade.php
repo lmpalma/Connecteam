@@ -18,18 +18,18 @@
             }
             .page{
                 width: 100%;
-                min-height: 90vh;
+                min-height: 72vh;
             }
             .header{
                 width: 100%;
-                background-color: #5b3a9b;
+                background: #382E90;
                 align-items: center;
                 height: 10vh;
                 margin-top: 0;
                 margin-bottom: 5px;
                 display: flex;
-                padding: 0 20px;
                 z-index: 1;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6)
             }
             .web-img{
                 margin-left: 20px;
@@ -43,7 +43,7 @@
                 margin-top: auto;
                 margin-bottom: auto;
                 align-items: center;
-                font-size: 20px;
+                font-size: 22px;
                 font-family: Verdana;
                 color: white;
             }
@@ -56,6 +56,7 @@
                 background-color: transparent;
                 font-stretch: wider;
                 padding: 12px;
+                margin-left: 26px;
             }
             .menu{
                 display: none;
@@ -64,7 +65,7 @@
                 min-width: 18vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 20px;
+                margin-top: 5px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
             }
             .menu-list{
@@ -77,13 +78,12 @@
                 padding-bottom: 18px;
                 border: solid lightgray 2px;
                 text-align: center;
-                display: inline-block;
+                display: block;
                 color: black;
             }
             .dropdown-menu{
                 position: relative;
                 display: inline-block;
-                margin-left: 24px;
             }
             .drop-btn:hover{
                 cursor: pointer;
@@ -138,6 +138,7 @@
             
 
             .dashboard {
+                margin-top: 34px;
                 flex: 1;
                 display: flex;
                 flex-wrap: wrap;
@@ -157,7 +158,7 @@
                 align-items: center;
                 text-align: center;
                 position: relative;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
             }
 
             .box i {
@@ -200,12 +201,12 @@
             }
             
             .footer-bar {
-                height: 10vh;
-                background-color: #5b3a9b;
+                height: 8vh;
+                background-color: #382E90;
                 color: #fff;
                 text-align: center;
-                padding: 30px;
-                margin-top: auto;
+                padding: 20px;
+                margin-top: 5%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -241,7 +242,7 @@
             .dropdown-notif {
                 position: relative;
                 display: inline-block;
-                margin-right: 50px;
+                margin-right: 20px;
                 margin-left: auto;
             }
 
@@ -252,43 +253,46 @@
             .notif {
                 display: none;
                 position: absolute;
-                background-color: #f9f9f9;
-                min-width: 15vw;
+                background-color: #DFB2FF;
+                min-width: 20vw;
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 z-index: 1;
-                margin-top: 10px;
+                margin-top: 5px;
                 box-shadow: rgb(58, 34, 82) 0 0 4px;
                 right: 0;
+                border-radius: 5px;
+                padding: 6px;
             }
 
             .notif-name{
-                font-size: 16px;
+                font-size: 18px;
                 font-family: Verdana;
                 font-weight: bold;
-                margin: 10px;
-                margin-top: 15px;
+                padding-bottom: 16px;
                 color: black;
                 text-align: center;
-                border-bottom: 1px solid lightgray;
+                border-radius: 5px;
+                border-bottom: 2px solid lightgray;
             }
 
             .notif-item {
                 width: 100%;
                 text-decoration: none;
-                font-size: 16px;
+                font-size: 15px;
                 font-family: Verdana, sans-serif;
                 list-style-type: none;
-                padding: 12px 0;
-                border-bottom: 1px solid lightgray;
+                border-bottom: 2px solid lightgray;
                 text-align: center;
-                display: block;
+                display: inline-block;
                 color: black;
                 transition: background-color 0.2s;
+                padding-bottom: 16px;
+                padding-top: 10px;
             }
 
             .notif-item:hover {
-                background: rgba(46, 19, 83, 0.3);
-                color: rgb(41, 6, 75);
+                background-color: #f0f0f0;
+                color: #382E90;
             }
 
             .view-all-notifications {
@@ -304,6 +308,7 @@
             .view-all-notifications:hover {
                 background-color: #f0f0f0;
             }
+
 
             @media (max-width: 768px) {
                 .left-nav {
@@ -345,7 +350,7 @@
                     </a>            
                 </div>
             </div>
-            <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
+            <img src="{{ asset('assets/images/icon2.png') }}" class="web-img" alt="Connecteam Logo">
             <h1 class = "web-title">Connecteam</h1>
 
             <div class = "dropdown-notif">

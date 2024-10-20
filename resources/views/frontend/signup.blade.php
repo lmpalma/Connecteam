@@ -52,7 +52,7 @@
             padding: 40px;
             background-color: white;
             border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;

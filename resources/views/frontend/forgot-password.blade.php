@@ -24,12 +24,12 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.8);
             z-index: 1;
-            padding: 0 20px;
         }
         .web-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            margin-left: 24px;
         }
         .web-title {
             margin-left: 15px;
@@ -51,7 +51,7 @@
             padding: 40px;
             background-color: white;
             border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -63,16 +63,18 @@
             align-self: flex-start;
             margin-bottom: 5px;
         }
-        input {
-            width: 94%;
+        input[type="email"]{
+            width: 98%;
+            margin-left: auto;
+            margin-right:auto;
             height: 40px; 
             font-size: 16px;
             margin: 10px 0; 
-            padding: 0 10px; 
-            background: rgba(155, 62, 164, 0.5);
-            border: 2px solid rgb(100, 0, 153);
-            border-radius: 10px;
+            background: white;
+            border: solid 1px #cccccc;
+            border-radius: 5px;
             outline: none;
+            transition: border-color 0.3s ease;
         }
         button {
             margin-top: 15px;
@@ -80,14 +82,16 @@
             height: 40px;
             font-size: 16px; 
             color: white;
-            background-color: rgb(100, 0, 153);
+            background-color: #5b3a9b;;
             border-radius: 10px;
             cursor: pointer;
             border: none;
             transition: background-color 0.3s;
+            outline: 1px solid #5b3a9b;;
         }
         button:hover {
-            background-color: rgb(0, 0, 0);
+            color: #5b3a9b;;
+            background-color: white;
         }
         p {
             font-size: 12px;
@@ -199,7 +203,7 @@
                 @csrf
                 
                 <label for="email">Email:</label>
-                <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>                
+                <input type="email" id="email" name="email" class="input-box" placeholder="Enter your email" required>                
                 <button type="submit" class="sendEmail-btn">SEND EMAIL</button>
 
                 <p>Go back to <a href="{{ route('frontend.login') }}">Login</a></p>
