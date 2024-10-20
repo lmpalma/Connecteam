@@ -434,7 +434,7 @@
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
-            <h1 class = "web-title">Connecteam</h1>
+            <h1 class = "web-title">Admin Panel</h1>
 
             <div class = "dropdown-notif">
                 <button type = "button" class = "notif-btn" onClick = "notifFunction()"><i class="fa-solid fa-bell"></i><span id="notifBadge" class="badge" style="display: none;"></span></button>
