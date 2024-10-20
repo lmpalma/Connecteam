@@ -204,6 +204,10 @@
                 font-size: 14px;
                 transition: border-color 0.3s ease;
             }
+            option:hover{
+                cursor: pointer;
+                background-color: #5b3a9b;
+            }
 
             input[type="text"]:focus, textarea:focus, input[type="date"]:focus, select:focus {
                 border-color: #5b3a9b;

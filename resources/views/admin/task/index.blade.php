@@ -352,6 +352,11 @@
                 background-color: #5b3a9b;
                 color: white;
             }
+            .action-btns{
+                display: flex;
+                justify-content: center;
+                height: auto;
+            }
             .edit-btn, .delete-btn {
                 text-decoration: none;
                 padding: 5px 10px;
@@ -360,10 +365,10 @@
                 transition: background-color 0.3s;
             }
             .edit-btn {
-                width: 50%;
+                width: 20px;
                 font-size: 16px;
                 color: white;
-                background-color:#5b3a9b;
+                background-color: #5b3a9b;
                 border-radius: 10px;
                 border: none;
                 font-family: Verdana;
@@ -376,8 +381,8 @@
                 outline: 1px solid #5b3a9b;
             }
             .delete-btn {
-                width: 50%;
                 font-size: 16px;
+                width: 20px;
                 color: white;
                 background-color: rgb(220,53,69);
                 border-radius: 10px;
@@ -390,9 +395,6 @@
                 background-color: white;
                 color: rgb(220,53,69);
                 outline: 1px solid rgb(220,53,69);
-            }
-            .action-btns{
-                display: flex;
             }
 
             .alert-success {
