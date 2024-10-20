@@ -25,12 +25,12 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.8);
             z-index: 1;
-            padding: 0 20px;
         }
         .web-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            margin-left: 24px;
         }
         .web-title {
             margin-left: 15px;
@@ -64,7 +64,7 @@
             align-self: flex-start;
             margin-bottom: 5px;
         }
-        input {
+        input[type="text"], input[type="password"] {
             width: 98%;
             margin-left: auto;
             margin-right:auto;
@@ -76,6 +76,19 @@
             border-radius: 5px;
             outline: none;
             transition: border-color 0.3s ease;
+        }
+        
+        .show-pw-section{
+            display: flex;
+        }
+        
+        input[type="checkbox"]:checked{
+            background-color: purple;
+        }
+        .show-pw{
+            font-family: Verdana;
+            font-size: 14px;
+            color: black;
         }
         input:focus{
                 border-color: #5b3a9b;
@@ -134,7 +147,8 @@
             font-family: Tahoma;
             text-align: center;
             margin: 0;
-            margin-bottom: 30px; 
+            margin-bottom: 30px;
+            color: #5b3a9b;
         }
 
         .alert-success {
@@ -212,6 +226,9 @@
                 <input type="text" id="email" name="email" class="input-box" placeholder="Enter your email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" class="input-box" placeholder="Enter your password" required>
+                <div class = "show-pw-section">
+                    <input type="checkbox" onclick="myFunction()"><span class ="show-pw">Show Password</span>
+                </div>
                 <button type="submit" class="login-btn">LOGIN</button>                
                 <p>Forgot password? <a href="{{ route('frontend.forgot-password') }}">Click Here</a></p>
                 <p>Don't have an account? <a href="{{ route('frontend.signup') }}">Sign Up</a></p>
@@ -225,5 +242,15 @@
             <h4>©️ 2024 - Connecteam | All rights reserved.</h4>
         </div>
     </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 </body>
 </html>

@@ -25,12 +25,12 @@
             align-items: center;
             background: rgba(255, 255, 255, 0.8);
             z-index: 1;
-            padding: 0 20px;
         }
         .web-img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            margin-left: 24px;
         }
         .web-title {
             margin-left: 15px;
@@ -74,7 +74,7 @@
             
             margin-bottom: 5px;
         } 
-        input {
+        input[type="text"], input[type="password"], input[type = "email"] {
             width: 98%;
             margin-left: auto;
             margin-right:auto;
@@ -86,6 +86,19 @@
             border-radius: 5px;
             outline: none;
             transition: border-color 0.3s ease;
+        }
+        
+        .show-pw-section{
+            display: flex;
+        }
+        
+        input[type="checkbox"]:checked{
+            background-color: purple;
+        }
+        .show-pw{
+            font-family: Verdana;
+            font-size: 14px;
+            color: black;
         }
         input:focus{
                 border-color: #5b3a9b;
@@ -120,6 +133,7 @@
             color: rgb(0, 0, 0);
         }
         .footer-bar {
+            margin-top: 20px;
             height: 10vh;
             width: 100%;
             border-top: solid gray 2px;
@@ -137,6 +151,15 @@
             text-align: center;
             margin: 0;
             margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .intro {
+            font-size: 18px;
+            font-family: Tahoma;
+            text-align: center;
+            margin: 0;
+            margin-bottom: 30px; 
+            color: #5b3a9b;
         }
 
         .alert-error {
@@ -170,7 +193,8 @@
         <h1 class="web-title">Connecteam</h1>
     </div>
     <div class="page-area">
-        <h1 class="welcome">CREATE AN ACCOUNT</h1>
+        <h1 class="welcome">BE PART OF THE TEAM</h1>
+        <p class="intro">Sign up your account to proceed.</p>
 
         @if($errors->any())
             <div class="alert alert-error">
@@ -197,7 +221,9 @@
                 
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" class="input-box" placeholder="Confirm your password" required>
-                
+                <div class = "show-pw-section">
+                    <input type="checkbox" onclick="myFunction()"><span class ="show-pw">Show Password</span>
+                </div>
                 <button type="submit" class="signup-btn">SIGN UP</button>
             </form>
             <p>Already have an account? <a href="{{ route('frontend.login') }}">Log In</a></p>
@@ -208,5 +234,18 @@
             <h4>©️ 2024 - Connecteam | All rights reserved.</h4>
         </div>
     </footer>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            var y = document.getElementById("password_confirmation");
+            if (x.type === "password" && y.type === "password") {
+                x.type = "text";
+                y.type = "text"
+            } else {
+                x.type = "password";
+                y.type = "password";
+            }
+        }
+    </script>
 </body>
 </html>
