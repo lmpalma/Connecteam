@@ -10,8 +10,7 @@
         <style>
             body{
                 min-height: 100vh;
-                /* background-image: url('{{ asset('assets/images/bg2.png') }}'); */
-                background: rgba(46, 19, 83, 0.3);
+                background-image: url('{{ asset('assets/images/bg.png') }}');
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
