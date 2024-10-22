@@ -20,6 +20,11 @@
             .page{
                 width: 100%;
                 min-height: 72vh;
+                animation: fadeIn 2s;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
             .header{
                 width: 100%;

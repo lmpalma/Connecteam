@@ -20,6 +20,11 @@
             .page{
                 width: 100%;
                 min-height: 90vh;
+                animation: fadeIn 1s;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
             .header{
                 width: 100%;
@@ -191,6 +196,18 @@
             input[type="text"]:focus, textarea:focus, input[type="email"]:focus, input[type="password"]:focus {
                 border-color: #5b3a9b;
                 outline: none;
+            }
+            .show-pw-section{
+            display: flex;
+            }
+        
+            input[type="checkbox"]:checked{
+                background-color: purple;
+            }
+            .show-pw{
+                font-family: Verdana;
+                font-size: 14px;
+                color: black;
             }
             .create-button {
                 width: 50%;
@@ -433,7 +450,7 @@
                 </div>
             </div>
             <img src="{{ asset('assets/images/icon.png') }}" class="web-img" alt="Connecteam Logo">
-            <h1 class = "web-title">Connecteam</h1>
+            <h1 class = "web-title">Admin Panel</h1>
 
             <div class = "dropdown-notif">
                 <button type = "button" class = "notif-btn" onClick = "notifFunction()"><i class="fa-solid fa-bell"></i><span id="notifBadge" class="badge" style="display: none;"></span></button>
@@ -463,14 +480,18 @@
             <h2>ADD USER</h2>
             <form method="POST" action="{{ route('admin.user.store') }}">
                 @csrf
-                <label for="name">Full Name</label><br>
+                <label for="name">Full Name</label>
                 <input type="text" name="name" id="name" required><br><br>
 
-                <label for="email">Email</label><br>
+                <label for="email">Email</label>
                 <input type="email" name="email" id="email" required><br><br>
 
-                <label for="password">Password</label><br>
-                <input type="password" name="password" id="password" required><br><br>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" required>
+
+                <div class = "show-pw-section">
+                    <input type="checkbox" onclick="myFunction()"><span class ="show-pw">Show Password</span>
+                </div>
 
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
                     <button type="submit" class="create-button">ADD USER</button>
@@ -583,5 +604,15 @@
         }
 
         document.addEventListener('DOMContentLoaded', initNotificationBadge);
+
+        /*show password function*/
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 </html>

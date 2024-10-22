@@ -19,6 +19,11 @@
             .page{
                 width: 100%;
                 min-height: 50vh;
+                animation: fadeIn 2s;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
             .header{
                 width: 100%;
@@ -423,7 +428,7 @@
         </div>
         <div class="page">
         <div class="container">
-            <h2>Task Details</h2>
+            <h2>TASK DETAILS</h2>
                 <div class="info">
                     <strong>Title:</strong> {{ $task->title }}
                 </div>

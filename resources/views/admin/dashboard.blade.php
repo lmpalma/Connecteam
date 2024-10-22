@@ -11,14 +11,21 @@
             body{
                 min-height: 100vh;
                 background-image: url('{{ asset('assets/images/bg.png') }}');
+                
                 background-repeat: no-repeat;
                 background-size: cover;
                 margin: 0;
                 font-family: Verdana, sans-serif;
             }
+            
             .page{
                 width: 100%;
                 min-height: 72vh;
+                animation: fadeIn 1s;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
             .header{
                 width: 100%;

@@ -20,6 +20,11 @@
             .page{
                 width: 100%;
                 min-height: 70vh;
+                animation: fadeIn 1s;
+            }
+            @keyframes fadeIn {
+                0% { opacity: 0; }
+                100% { opacity: 1; }
             }
             .header{
                 width: 100%;
@@ -190,6 +195,18 @@
             input[type="text"]:focus, textarea:focus, input[type="email"]:focus, input[type="password"]:focus {
                 border-color: #5b3a9b;
                 outline: none;
+            }
+            .show-pw-section{
+                display: flex;
+            }
+        
+            input[type="checkbox"]:checked{
+                background-color: purple;
+            }
+            .show-pw{
+                font-family: Verdana;
+                font-size: 14px;
+                color: black;
             }
 
             .update-button {
@@ -479,6 +496,9 @@
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" class="input-box" placeholder="Leave blank to keep current password">
                 </div>
+                <div class = "show-pw-section">
+                    <input type="checkbox" onclick="myFunction()"><span class ="show-pw">Show Password</span>
+                </div>
 
                 <div style="display: flex; justify-content: center; margin-top: 20px;">
                     <button type="submit" class="update-button">UPDATE USER</button>
@@ -591,5 +611,15 @@
         }
 
         document.addEventListener('DOMContentLoaded', initNotificationBadge);
+
+        /*show password function*/
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
     </script>
 </html>
