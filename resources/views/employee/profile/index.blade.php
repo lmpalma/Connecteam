@@ -336,13 +336,104 @@
                 background-color: #f0f0f0;
             }
             
-
-            @media (max-width: 768px) {
+            /*web-responsiveness*/
+            @media only screen and (max-width: 768px) {
                 .left-nav {
                     flex: 0 0 30vw;
                 }
                 .box {
                     width: 80vw;
+                }
+                .drop-btn {
+                    font-size: 28px;
+                    padding: 10px;
+                    margin-left: 20px;
+                }
+                .notif-btn {
+                    font-size: 30px;
+                }
+                .notif-name, .view-all-notifications {
+                    font-size: 16px;
+                }
+                .notif-item {
+                    font-size: 14px;
+                }
+                .menu, .notif{
+                    min-width: 60vw;
+                }
+                .menu-list {
+                    font-size: 14px;
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                }
+                .current-page {
+                    font-size: 14px;
+                    padding-top: 16px;
+                    padding-bottom: 16px;
+                }
+                .img {
+                    height: 100px;
+                    width: 100px;
+                    margin-top: 30px;
+                    margin-bottom: 15px;
+                }
+                .employee-name {
+                    font-size: 14px;
+                }
+                td {
+                    font-size: 14px;
+                }
+                .container {
+                    width: 70%;
+                }
+                h2 {
+                    font-size:24px;
+                }
+                .info {
+                    font-size: 14px;
+                }
+                .edit-btn {
+                    font-size: 14px;
+                }
+            }
+
+            @media only screen and (max-width: 480px) {
+                .web-img {
+                    margin-left: 10px;
+                    width: 36px;
+                    height: 36px;
+                }
+                .drop-btn {
+                    font-size: 24px;
+                    padding: 8px;
+                    margin-left: 15px;
+                }
+                .notif-btn {
+                    font-size: 28px;
+                }
+                .badge {
+                    width: 6px;
+                    height: 6px;
+                }
+
+                .menu-list {
+                    font-size: 12px;
+                    padding-top: 14px;
+                    padding-bottom: 14px;
+                }
+                .current-page {
+                    font-size: 12px;
+                    padding-top: 14px;
+                    padding-bottom: 14px;
+                }
+                .img {
+                    height: 80px;
+                    width: 80px;
+                    margin-top: 20px;
+                    margin-bottom: 10px;
+                }
+                .employee-name {
+                    font-size: 12px;
                 }
             }
         </style>
