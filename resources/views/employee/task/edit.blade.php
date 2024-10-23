@@ -200,8 +200,13 @@
                 background: rgba(188, 164, 192, 0.8);
                 transition: background-color 0.3s;
                 cursor:pointer;
-
             }
+            .file-names {
+                font-size: 14px;
+                margin-top: 10px;
+                text-align: center;
+            }
+
             .censored {
                 color: gray;
             }
@@ -449,7 +454,7 @@
                         @method('PUT')
                         <input type="file" id="file-upload" name="task_files[]" multiple required>
                         <label class = "choose-file-btn" for="file-upload">Choose Files</label>
-                        <br>
+                        <div id="file-names" class="file-names"></div>
                         <button type="submit" class="upload-btn">UPLOAD FILES</button>
                     </form>
                 </div>
@@ -559,5 +564,19 @@
         }
 
         document.addEventListener('DOMContentLoaded', initNotificationBadge);
+
+        /*Files chosen*/
+        document.getElementById('file-upload').addEventListener('change', function() {
+            var fileNamesDiv = document.getElementById('file-names');
+            fileNamesDiv.innerHTML = ''; 
+
+            for (var i = 0; i < this.files.length; i++) {
+                var file = this.files[i];
+                var listItem = document.createElement('div');
+                listItem.textContent = file.name;
+                fileNamesDiv.appendChild(listItem);
+                }
+        });
+
     </script>
 </html>
