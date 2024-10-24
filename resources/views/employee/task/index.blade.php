@@ -494,7 +494,20 @@
             }
             
             /*web-responsiveness*/
+            @media only screen and (max-width: 820px) {
+                .menu, .notif{
+                    min-width: 50vw;
+                }
+                .main-table {
+                    width: 80%;
+                }
+            }
+
             @media only screen and (max-width: 768px) {
+                .header, .page, .footer-bar{
+                    width: 175%;
+                }
+                
                 .left-nav {
                     flex: 0 0 30vw;
                 }
@@ -537,19 +550,20 @@
                 .employee-name {
                     font-size: 14px;
                 }
-                td, th{
-                    font-size: 12px;
-                }
-                .filter-link {
+                td {
                     font-size: 14px;
                 }
-                
                 h2{
                     font-size: 26px;
                 }
+                
             }
 
             @media only screen and (max-width: 480px) {
+                .header, .page, .footer{
+                    width: 185%;
+                }
+
                 .web-img {
                     margin-left: 10px;
                     width: 36px;
